@@ -1,656 +1,1135 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#173b32">
-<meta name="description" content="La Perla del Norte. Viajes, cultura, gastronomía y experiencias auténticas por el norte de España.">
-<title>La Perla del Norte | Viajar con esencia</title>
+<meta name="description" content="La Perla del Norte — Agencia de viajes. Descubre Cantabria y el norte de España a través de viajes, gastronomía, cultura y experiencias auténticas.">
+
+<title>La Perla del Norte | Agencia de Viajes</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
 :root {
-  --forest: #173b32;
-  --deep: #102b25;
-  --gold: #c6a66a;
-  --cream: #f7f5ef;
-  --white: #fffefa;
-  --text: #263a32;
-  --muted: #69766f;
+    --verde: #173b32;
+    --verde-oscuro: #0d2922;
+    --verde-suave: #315c50;
+    --dorado: #c6a66a;
+    --crema: #f7f2e7;
+    --blanco: #ffffff;
+    --texto: #24342f;
+    --gris: #6d7a75;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--text);
-  background: var(--cream);
-  line-height: 1.7;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--texto);
+    background: var(--crema);
+    line-height: 1.7;
 }
 
-a { color: inherit; }
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================
+   NAVEGACIÓN
+========================= */
 
 header {
-  background: rgba(16,43,37,.97);
-  color: white;
-  padding: 17px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid rgba(198,166,106,.35);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(13, 41, 34, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.brand {
-  font-family: Georgia, serif;
-  font-size: 23px;
-  letter-spacing: .5px;
-  line-height: 1.2;
-  white-space: nowrap;
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    height: 82px;
+    padding: 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.brand span { color: var(--gold); }
-
-.brand small {
-  display: block;
-  font: 9px Arial, sans-serif;
-  letter-spacing: 3px;
-  margin-top: 5px;
-  color: #d9ded8;
+.nav-logo img {
+    width: 125px;
+    filter: brightness(0) invert(1);
 }
 
-nav { display: flex; flex-wrap: wrap; gap: 22px; }
-
-nav a {
-  color: #f8f6ef;
-  font-size: 12px;
-  text-decoration: none;
-  letter-spacing: .7px;
-  transition: color .2s;
+.nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    list-style: none;
 }
 
-nav a:hover { color: var(--gold); }
+.nav-links a {
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--dorado);
+}
+
+.nav-button {
+    border: 1px solid var(--dorado);
+    padding: 10px 18px;
+    color: white !important;
+}
+
+/* =========================
+   PORTADA
+========================= */
 
 .hero {
-  min-height: 650px;
-  padding: 100px 7%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  background:
-    linear-gradient(110deg, rgba(9,32,27,.72), rgba(15,40,34,.38)),
-    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=85")
-    center 52% / cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background:
+        linear-gradient(rgba(8,35,29,0.48), rgba(8,35,29,0.72)),
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
 }
 
-.hero-content { max-width: 900px; }
+.hero-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 140px 28px 90px;
+    color: white;
+}
 
-.eyebrow {
-  color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: bold;
+.hero-small {
+    color: var(--dorado);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
-  font: 400 clamp(45px, 8vw, 88px)/1.08 Georgia, serif;
-  margin: 24px 0;
-  text-shadow: 0 3px 20px rgba(0,0,0,.2);
+    font-size: clamp(58px, 8vw, 105px);
+    line-height: 0.9;
+    font-weight: 500;
+    max-width: 850px;
+    margin-bottom: 30px;
 }
 
-.hero h1 span { color: #e5c987; }
+.hero h1 span {
+    color: #e4cf9e;
+}
 
 .hero p {
-  font: 18px/1.8 Georgia, serif;
-  max-width: 660px;
-  margin: 0 auto;
-  color: #f2f0e9;
+    max-width: 650px;
+    font-size: 17px;
+    font-weight: 300;
+    margin-bottom: 38px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
 }
 
 .button {
-  display: inline-block;
-  padding: 14px 27px;
-  margin-top: 30px;
-  background: var(--gold);
-  color: #152e26;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 11px;
-  font-weight: bold;
-  border: 1px solid var(--gold);
-  transition: .25s;
+    display: inline-block;
+    padding: 14px 25px;
+    border: 1px solid var(--dorado);
+    color: white;
+    letter-spacing: 1px;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.button.primary {
+    background: var(--dorado);
+    color: var(--verde-oscuro);
 }
 
 .button:hover {
-  background: transparent;
-  color: white;
+    transform: translateY(-3px);
 }
 
-.button.outline {
-  background: transparent;
-  color: var(--forest);
-  border-color: var(--forest);
+/* =========================
+   SECCIONES
+========================= */
+
+section {
+    padding: 100px 28px;
 }
 
-.button.outline:hover {
-  background: var(--forest);
-  color: white;
+.container {
+    max-width: 1150px;
+    margin: auto;
 }
+
+.section-label {
+    color: var(--dorado);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: clamp(42px, 5vw, 65px);
+    color: var(--verde);
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.section-intro {
+    max-width: 650px;
+    color: var(--gris);
+    margin-bottom: 55px;
+}
+
+/* =========================
+   FILOSOFÍA
+========================= */
 
 .intro {
-  text-align: center;
-  max-width: 850px;
-  padding: 95px 24px;
-  margin: auto;
+    background: var(--crema);
 }
 
-.intro h2, .section-heading h2 {
-  font: 400 clamp(32px, 5vw, 47px)/1.2 Georgia, serif;
-  color: var(--forest);
-  margin: 14px 0 20px;
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
 }
 
-.intro p, .section-heading p {
-  color: var(--muted);
-  font-size: 15px;
+.intro-image {
+    min-height: 500px;
+    background:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
 }
 
-.rule {
-  width: 55px;
-  height: 2px;
-  background: var(--gold);
-  margin: 22px auto;
+.intro-text h2 {
+    font-size: 58px;
+    color: var(--verde);
+    line-height: 1;
+    margin-bottom: 25px;
 }
 
-.section { padding: 85px 7%; }
-
-.section-heading {
-  max-width: 750px;
-  margin: 0 auto 48px;
-  text-align: center;
+.intro-text p {
+    color: var(--gris);
+    margin-bottom: 18px;
 }
 
-.dark-section {
-  background: var(--forest);
-  color: white;
+/* =========================
+   EXPERIENCIAS
+========================= */
+
+.experiences {
+    background: white;
 }
 
-.dark-section .section-heading h2 { color: white; }
-.dark-section .section-heading p { color: #d4ded8; }
-
-.travel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 24px;
-  max-width: 1250px;
-  margin: auto;
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
 }
 
-.travel-card {
-  background: var(--white);
-  color: var(--text);
-  border-bottom: 3px solid var(--gold);
-  transition: transform .25s, box-shadow .25s;
+.card {
+    padding: 42px 32px;
+    border: 1px solid #ded8c9;
+    background: #fff;
+    transition: 0.35s;
+    position: relative;
+    overflow: hidden;
 }
 
-.travel-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 18px 35px rgba(0,0,0,.2);
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(23,59,50,0.10);
 }
 
-.travel-photo {
-  min-height: 205px;
-  background-size: cover;
-  background-position: center;
+.card-number {
+    color: var(--dorado);
+    font-size: 13px;
+    letter-spacing: 2px;
 }
 
-.photo-general {
-  background-image: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80");
+.card h3 {
+    font-size: 38px;
+    color: var(--verde);
+    margin: 15px 0;
 }
 
-.photo-medio {
-  background-image: url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80");
+.card p {
+    color: var(--gris);
+    font-size: 14px;
 }
 
-.photo-vip {
-  background-image: url("https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80");
+.card-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: var(--verde);
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
-.travel-info { padding: 29px; }
+/* =========================
+   DESTINOS
+========================= */
 
-.travel-info .number {
-  color: #a8874c;
-  font-size: 10px;
-  letter-spacing: 2px;
-  font-weight: bold;
+.destinations {
+    background: var(--verde);
+    color: white;
 }
 
-.travel-info h3 {
-  font: 30px Georgia, serif;
-  color: var(--forest);
-  margin: 9px 0 13px;
+.destinations .section-title {
+    color: white;
 }
 
-.travel-info p { color: var(--muted); font-size: 14px; }
-
-.travel-info ul {
-  padding-left: 18px;
-  margin-top: 16px;
-  color: var(--text);
-  font-size: 13px;
+.destinations .section-intro {
+    color: #c7d4cf;
 }
 
-.travel-info li { margin: 5px 0; }
-
-.travel-info .button { margin-top: 23px; }
-
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 22px;
-  max-width: 1200px;
-  margin: auto;
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
 }
 
-.experience {
-  padding: 30px 27px;
-  background: white;
-  border: 1px solid #e7e3d9;
+.destination {
+    min-height: 330px;
+    display: flex;
+    align-items: flex-end;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
 }
 
-.experience .symbol { font-size: 27px; }
-
-.experience h3 {
-  font: 24px Georgia, serif;
-  color: var(--forest);
-  margin: 14px 0 9px;
+.destination::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
 }
 
-.experience p { color: var(--muted); font-size: 14px; }
-
-.products-section { background: #eeece3; }
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: auto;
+.destination h3 {
+    position: relative;
+    z-index: 2;
+    font-size: 34px;
+    color: white;
 }
 
-.product {
-  background: var(--white);
-  padding: 31px 24px;
-  text-align: center;
-  border: 1px solid #e5dfd1;
-  transition: transform .2s;
+.cantabria {
+    background-image: url("https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=800&q=80");
 }
 
-.product:hover { transform: translateY(-4px); }
-
-.product .symbol { font-size: 36px; }
-
-.product h3 {
-  font: 24px Georgia, serif;
-  color: var(--forest);
-  margin: 12px 0 8px;
+.asturias {
+    background-image: url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80");
 }
 
-.product p { color: var(--muted); font-size: 13px; }
-
-.product .category {
-  display: inline-block;
-  margin-top: 14px;
-  color: #92713a;
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+.pais-vasco {
+    background-image: url("https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?auto=format&fit=crop&w=800&q=80");
 }
 
-.brand-note {
-  text-align: center;
-  color: var(--muted);
-  max-width: 750px;
-  margin: 32px auto 0;
-  font-size: 12px;
+.galicia {
+    background-image: url("https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80");
 }
 
-.manifesto {
-  padding: 90px 7%;
-  text-align: center;
-  color: white;
-  background:
-    linear-gradient(rgba(12,40,32,.82), rgba(12,40,32,.88)),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80")
-    center / cover;
+/* =========================
+   SABORES
+========================= */
+
+.flavors {
+    background: var(--crema);
 }
 
-.manifesto blockquote {
-  max-width: 850px;
-  margin: auto;
-  font: italic clamp(27px, 4.5vw, 43px)/1.45 Georgia, serif;
+.flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.manifesto p {
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 3px;
-  margin-top: 25px;
-  text-transform: uppercase;
+.flavor {
+    background: white;
+    padding: 30px;
+    border-bottom: 3px solid var(--dorado);
 }
+
+.flavor-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.flavor h3 {
+    color: var(--verde);
+    font-size: 30px;
+}
+
+.flavor span {
+    color: var(--dorado);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.flavor p {
+    margin-top: 12px;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* =========================
+   EXPERIENCIAS
+========================= */
+
+.activities {
+    background: white;
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.activity {
+    min-height: 150px;
+    background: var(--verde);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 22px;
+}
+
+.activity strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.activity span {
+    font-size: 11px;
+    color: #bfcfc8;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
 
 .contact {
-  text-align: center;
-  padding: 90px 24px;
-  max-width: 800px;
-  margin: auto;
+    background:
+        linear-gradient(rgba(13,41,34,0.93), rgba(13,41,34,0.96)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    color: white;
 }
 
-.contact h2 {
-  font: 400 clamp(34px, 5vw, 48px) Georgia, serif;
-  color: var(--forest);
-  margin: 15px 0;
+.contact .section-title {
+    color: white;
 }
 
-.contact p { color: var(--muted); }
+.contact .section-intro {
+    color: #c5d0cc;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 800px;
+}
+
+.form input,
+.form select,
+.form textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-family: inherit;
+    outline: none;
+}
+
+.form select option {
+    color: #222;
+}
+
+.form textarea {
+    min-height: 130px;
+    resize: vertical;
+    grid-column: 1 / -1;
+}
+
+.form button {
+    border: none;
+    padding: 16px 25px;
+    background: var(--dorado);
+    color: var(--verde-oscuro);
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-  background: var(--deep);
-  color: #dce3dc;
-  padding: 35px 6%;
-  text-align: center;
-  font-size: 12px;
+    background: #081d18;
+    color: #b8c7c1;
+    padding: 60px 28px 25px;
 }
 
-footer .footer-brand {
-  font: 25px Georgia, serif;
-  color: white;
-  margin-bottom: 8px;
+.footer-grid {
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 50px;
 }
 
-footer .footer-brand span { color: var(--gold); }
-
-footer p { margin-top: 8px; color: #b8c5bc; }
-
-@media (max-width: 900px) {
-  header { flex-direction: column; }
-  nav { justify-content: center; gap: 12px 18px; }
-  .travel-grid, .experience-grid, .product-grid {
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
+.footer-logo img {
+    width: 160px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
-  .hero { min-height: 570px; padding: 75px 22px; }
-  .hero p { font-size: 16px; }
-  .section { padding: 65px 20px; }
-  .intro { padding: 70px 22px; }
-  .travel-grid, .experience-grid, .product-grid {
-    grid-template-columns: 1fr;
-  }
-  .brand { font-size: 21px; }
-  nav a { font-size: 11px; }
+footer h3 {
+    color: white;
+    font-size: 25px;
+    margin-bottom: 15px;
 }
+
+footer p {
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.footer-bottom {
+    max-width: 1150px;
+    margin: 45px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px;
+    color: #71817b;
+}
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 850px) {
+
+    .nav {
+        height: 72px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-image {
+        min-height: 350px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .flavor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    .form textarea,
+    .full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 500px) {
+
+    section {
+        padding: 75px 20px;
+    }
+
+    .hero-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <a href="#inicio" style="text-decoration:none;color:inherit">
-    <div class="brand">LA PERLA <span>DEL NORTE</span>
-      <small>VIAJES · CULTURA · TRADICIÓN</small>
-    </div>
-  </a>
+<!-- =========================
+     NAVEGACIÓN
+========================= -->
 
-  <nav aria-label="Navegación principal">
-    <a href="#inicio">INICIO</a>
-    <a href="#filosofia">NOSOTROS</a>
-    <a href="#viajes">VIAJES</a>
-    <a href="#experiencias">EXPERIENCIAS</a>
-    <a href="#sabores">ARTESANÍA</a>
-    <a href="#contacto">CONTACTO</a>
-  </nav>
+<header>
+
+<nav class="nav">
+
+<a href="#inicio" class="nav-logo">
+    <img src="logo.png" alt="La Perla del Norte">
+</a>
+
+<ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#experiencias">Experiencias</a></li>
+    <li><a href="#destinos">Destinos</a></li>
+    <li><a href="#sabores">Sabores</a></li>
+    <li><a href="#contacto" class="nav-button">Planifica tu viaje</a></li>
+</ul>
+
+</nav>
+
 </header>
 
-<main>
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <div class="eyebrow">Descubre el norte de España</div>
-      <h1>La Perla<br><span>del Norte</span></h1>
-      <p>
-        Hay lugares que se visitan y lugares que se quedan contigo.
-        Descubre paisajes extraordinarios, tradiciones vivas y sabores
-        que cuentan historias.
-      </p>
-      <a class="button" href="#viajes">Descubrir nuestros viajes</a>
-    </div>
-  </section>
 
-  <section class="intro" id="filosofia">
-    <div class="eyebrow">Nuestra esencia</div>
-    <h2>El norte, como nunca lo habías vivido.</h2>
-    <div class="rule"></div>
-    <p>
-      La Perla del Norte nace como un proyecto de agencia turística
-      dedicado a descubrir la riqueza natural, cultural y gastronómica
-      del norte de España. Diseñamos propuestas para diferentes viajeros,
-      uniendo paisajes, experiencias y productos artesanales.
-    </p>
-  </section>
+<!-- =========================
+     PORTADA
+========================= -->
 
-  <section class="section dark-section" id="viajes">
-    <div class="section-heading">
-      <div class="eyebrow">Encuentra tu manera de viajar</div>
-      <h2>Tres formas de descubrir el norte</h2>
-      <p>
-        Diferentes niveles de experiencia, con propuestas pensadas
-        para distintos presupuestos y estilos de viaje.
-      </p>
-    </div>
+<section class="hero" id="inicio">
 
-    <div class="travel-grid">
-      <article class="travel-card">
-        <div class="travel-photo photo-general" role="img"
-          aria-label="Montañas del norte de España"></div>
-        <div class="travel-info">
-          <div class="number">01 — ESENCIA</div>
-          <h3>General</h3>
-          <p>
-            Para estudiantes, jóvenes y viajeros que quieren descubrir
-            nuevos lugares con una propuesta accesible.
-          </p>
-          <ul>
-            <li>Excursiones y rutas culturales</li>
-            <li>Actividades en grupo</li>
-            <li>Descubrimiento de la gastronomía local</li>
-          </ul>
-          <a class="button outline" href="#contacto">Consultar propuesta</a>
-        </div>
-      </article>
+<div class="hero-content">
 
-      <article class="travel-card">
-        <div class="travel-photo photo-medio" role="img"
-          aria-label="Naturaleza y fauna"></div>
-        <div class="travel-info">
-          <div class="number">02 — CONEXIÓN</div>
-          <h3>Medio</h3>
-          <p>
-            Para familias y grupos que desean combinar comodidad,
-            cultura y experiencias especiales.
-          </p>
-          <ul>
-            <li>Planes personalizados para grupos</li>
-            <li>Experiencias gastronómicas</li>
-            <li>Rutas culturales y naturales</li>
-          </ul>
-          <a class="button outline" href="#contacto">Consultar propuesta</a>
-        </div>
-      </article>
+<div class="hero-small">
+La Perla del Norte · Agencia de viajes
+</div>
 
-      <article class="travel-card">
-        <div class="travel-photo photo-vip" role="img"
-          aria-label="Arquitectura y estancia exclusiva"></div>
-        <div class="travel-info">
-          <div class="number">03 — DISTINCIÓN</div>
-          <h3>VIP / Empresarial</h3>
-          <p>
-            Para quienes buscan una experiencia exclusiva, con atención
-            personalizada y una planificación cuidada.
-          </p>
-          <ul>
-            <li>Itinerarios a medida</li>
-            <li>Experiencias privadas bajo disponibilidad</li>
-            <li>Propuestas para empresas y celebraciones</li>
-          </ul>
-          <a class="button outline" href="#contacto">Consultar propuesta</a>
-        </div>
-      </article>
-    </div>
-  </section>
+<h1>
+El norte no se visita.
+<span>Se vive.</span>
+</h1>
 
-  <section class="section" id="experiencias">
-    <div class="section-heading">
-      <div class="eyebrow">Mucho más que un destino</div>
-      <h2>Experiencias con identidad</h2>
-      <p>
-        El verdadero viaje está en las personas, las costumbres y los
-        pequeños detalles que hacen único cada lugar.
-      </p>
-    </div>
+<p>
+Descubre paisajes, cultura, gastronomía y tradiciones
+a través de experiencias diseñadas para conectar
+con la esencia del norte de España.
+</p>
 
-    <div class="experience-grid">
-      <article class="experience">
-        <div class="symbol">🏞️</div>
-        <h3>Naturaleza y rutas</h3>
-        <p>
-          Paisajes verdes, pueblos con encanto, montañas y costa.
-          Propuestas para descubrir el entorno a otro ritmo.
-        </p>
-      </article>
+<div class="hero-buttons">
 
-      <article class="experience">
-        <div class="symbol">🍇</div>
-        <h3>Catas y gastronomía</h3>
-        <p>
-          Experiencias gastronómicas y degustaciones propuestas
-          en torno a productos y sabores de la región.
-        </p>
-      </article>
+<a href="#experiencias" class="button primary">
+Descubrir experiencias
+</a>
 
-      <article class="experience">
-        <div class="symbol">🧵</div>
-        <h3>Tradición artesanal</h3>
-        <p>
-          Una mirada a los productores, oficios y creaciones
-          artesanales que mantienen vivas las tradiciones locales.
-        </p>
-      </article>
-    </div>
-  </section>
+<a href="#destinos" class="button">
+Explorar destinos
+</a>
 
-  <section class="section products-section" id="sabores">
-    <div class="section-heading">
-      <div class="eyebrow">Una tierra para saborear</div>
-      <h2>Sabores y tesoros artesanales</h2>
-      <p>
-        Una selección conceptual de productos gastronómicos y recuerdos
-        para llevar un pedacito del norte contigo.
-      </p>
-    </div>
+</div>
 
-    <div class="product-grid">
-      <article class="product">
-        <div class="symbol">🍰</div>
-        <h3>Casa El Macho</h3>
-        <p>Sobaos tradicionales para descubrir el lado más dulce del norte.</p>
-        <div class="category">Repostería tradicional</div>
-      </article>
+</div>
 
-      <article class="product">
-        <div class="symbol">🧀</div>
-        <h3>La Llelderia</h3>
-        <p>Quesos y sabores ligados a la cultura gastronómica regional.</p>
-        <div class="category">Quesos</div>
-      </article>
+</section>
 
-      <article class="product">
-        <div class="symbol">🍇</div>
-        <h3>Miradorio Bodega</h3>
-        <p>El mundo del vino como parte de una experiencia de degustación.</p>
-        <div class="category">Vinos y catas</div>
-      </article>
 
-      <article class="product">
-        <div class="symbol">🐟</div>
-        <h3>Conservas Hoya</h3>
-        <p>Anchoas y productos del mar para conocer la tradición conservera.</p>
-        <div class="category">Conservas artesanales</div>
-      </article>
+<!-- =========================
+     FILOSOFÍA
+========================= -->
 
-      <article class="product">
-        <div class="symbol">🍺</div>
-        <h3>Dougall's</h3>
-        <p>La cultura cervecera como parte de la identidad gastronómica.</p>
-        <div class="category">Cerveza artesanal</div>
-      </article>
+<section class="intro">
 
-      <article class="product">
-        <div class="symbol">🧶</div>
-        <h3>Bambino</h3>
-        <p>Una propuesta de souvenirs textiles y llaveros artesanales para recordar el viaje.</p>
-        <div class="category">Recuerdos y textilería</div>
-      </article>
-    </div>
+<div class="container intro-grid">
 
-    <p class="brand-note">
-      Las marcas y productores se presentan como parte de la propuesta
-      conceptual del proyecto. Cualquier colaboración comercial,
-      disponibilidad de productos o cata deberá confirmarse previamente.
-    </p>
-  </section>
+<div class="intro-image"></div>
 
-  <section class="manifesto">
-    <blockquote>
-      “No se trata solo de llegar a un lugar,
-      sino de descubrir todo lo que lo hace inolvidable.”
-    </blockquote>
-    <p>La filosofía de La Perla del Norte</p>
-  </section>
+<div class="intro-text">
 
-  <section class="contact" id="contacto">
-    <div class="eyebrow">Tu próxima historia comienza aquí</div>
-    <h2>¿Descubrimos el norte juntos?</h2>
-    <div class="rule"></div>
-    <p>
-      Cuéntanos qué tipo de experiencia imaginas y prepara tu próxima
-      aventura. Consulta las opciones de viaje y las propuestas
-      gastronómicas disponibles.
-    </p>
-    <a class="button outline" href="mailto:">
-      Solicitar información
-    </a>
-    <p style="font-size:12px;margin-top:18px">
-      Proyecto en desarrollo. Los datos de contacto se añadirán próximamente.
-    </p>
-  </section>
-</main>
+<div class="section-label">
+Nuestra filosofía
+</div>
+
+<h2>
+Viajar con sentido.
+</h2>
+
+<p>
+En La Perla del Norte creemos que un viaje no se mide
+solamente en kilómetros recorridos, sino en historias,
+sabores y momentos que permanecen.
+</p>
+
+<p>
+Creamos propuestas turísticas para descubrir el norte
+de España desde una perspectiva auténtica, cuidada
+y cercana a sus tradiciones.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     EXPERIENCIAS
+========================= -->
+
+<section class="experiences" id="experiencias">
+
+<div class="container">
+
+<div class="section-label">
+Encuentra tu manera de viajar
+</div>
+
+<h2 class="section-title">
+Tres maneras de vivir el Norte
+</h2>
+
+<p class="section-intro">
+Elige la experiencia que mejor encaja con tu forma de viajar.
+Cada propuesta puede adaptarse a tus intereses, ritmo y compañía.
+</p>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-number">01 · ESENCIA</div>
+
+<h3>Esencia</h3>
+
+<p>
+Una primera aproximación al norte, pensada para descubrir
+sus paisajes, cultura y gastronomía de una manera auténtica.
+</p>
+
+<a href="#contacto" class="card-link">
+CONOCER PROPUESTA →
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">02 · HORIZONTE</div>
+
+<h3>Horizonte</h3>
+
+<p>
+Una experiencia más completa, combinando comodidad,
+descubrimiento y una selección especial de actividades.
+</p>
+
+<a href="#contacto" class="card-link">
+CONOCER PROPUESTA →
+</a>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-number">03 · DISTINCIÓN</div>
+
+<h3>Distinción</h3>
+
+<p>
+Una propuesta personalizada para quienes buscan
+atención especial, experiencias seleccionadas y exclusividad.
+</p>
+
+<a href="#contacto" class="card-link">
+CONOCER PROPUESTA →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     DESTINOS
+========================= -->
+
+<section class="destinations" id="destinos">
+
+<div class="container">
+
+<div class="section-label">
+El mapa del Norte
+</div>
+
+<h2 class="section-title">
+Destinos que dejan huella
+</h2>
+
+<p class="section-intro">
+Cuatro territorios. Infinitas historias.
+Descubre algunos de los destinos que forman parte de nuestro universo de viajes.
+</p>
+
+
+<div class="destination-grid">
+
+<div class="destination cantabria">
+<h3>Cantabria</h3>
+</div>
+
+<div class="destination asturias">
+<h3>Asturias</h3>
+</div>
+
+<div class="destination pais-vasco">
+<h3>País Vasco</h3>
+</div>
+
+<div class="destination galicia">
+<h3>Galicia</h3>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SABORES
+========================= -->
+
+<section class="flavors" id="sabores">
+
+<div class="container">
+
+<div class="section-label">
+Productos del territorio
+</div>
+
+<h2 class="section-title">
+Sabores que cuentan historias
+</h2>
+
+<p class="section-intro">
+El viaje también se descubre a través de la mesa.
+Nuestra propuesta gastronómica pone en valor productos
+artesanales y tradiciones del norte.
+</p>
+
+
+<div class="flavor-grid">
+
+<div class="flavor">
+<div class="flavor-icon">🥮</div>
+<span>Repostería tradicional</span>
+<h3>Casa El Macho</h3>
+<p>Sobaos artesanales vinculados a la tradición cántabra.</p>
+</div>
+
+<div class="flavor">
+<div class="flavor-icon">🧀</div>
+<span>Tradición quesera</span>
+<h3>La Llelderia</h3>
+<p>Una aproximación a la cultura del queso y sus productores.</p>
+</div>
+
+<div class="flavor">
+<div class="flavor-icon">🍷</div>
+<span>Enología</span>
+<h3>Miradorio Bodega</h3>
+<p>Descubre el mundo del vino a través de experiencias de cata.</p>
+</div>
+
+<div class="flavor">
+<div class="flavor-icon">🐟</div>
+<span>Sabores del Cantábrico</span>
+<h3>Conservas Hoya</h3>
+<p>La tradición conservera y el sabor de las anchoas.</p>
+</div>
+
+<div class="flavor">
+<div class="flavor-icon">🍺</div>
+<span>Cultura cervecera</span>
+<h3>Dougall's</h3>
+<p>Una propuesta para conocer el universo de la cerveza artesanal.</p>
+</div>
+
+<div class="flavor">
+<div class="flavor-icon">🧵</div>
+<span>Artesanía</span>
+<h3>Bambino</h3>
+<p>Recuerdos y piezas textiles inspiradas en el espíritu del norte.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     ACTIVIDADES
+========================= -->
+
+<section class="activities">
+
+<div class="container">
+
+<div class="section-label">
+Más allá del destino
+</div>
+
+<h2 class="section-title">
+Experiencias para recordar
+</h2>
+
+<div class="activity-grid">
+
+<div class="activity">
+<strong>Naturaleza</strong>
+<span>Rutas y paisajes</span>
+</div>
+
+<div class="activity">
+<strong>Cultura</strong>
+<span>Historia y patrimonio</span>
+</div>
+
+<div class="activity">
+<strong>Gastronomía</strong>
+<span>Sabores auténticos</span>
+</div>
+
+<div class="activity">
+<strong>Catas</strong>
+<span>Vino y productos locales</span>
+</div>
+
+<div class="activity">
+<strong>Artesanía</strong>
+<span>Tradición y creación</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
+
+<section class="contact" id="contacto">
+
+<div class="container">
+
+<div class="section-label">
+Empieza a imaginarlo
+</div>
+
+<h2 class="section-title">
+Diseña tu viaje
+</h2>
+
+<p class="section-intro">
+Cuéntanos qué tienes en mente y prepararemos una propuesta
+adaptada a tu forma de viajar.
+</p>
+
+
+<form class="form" onsubmit="enviarFormulario(event)">
+
+<input
+type="text"
+placeholder="Nombre"
+required
+>
+
+<input
+type="email"
+placeholder="Correo electrónico"
+required
+>
+
+<select required>
+<option value="">Tipo de experiencia</option>
+<option>Esencia</option>
+<option>Horizonte</option>
+<option>Distinción</option>
+</select>
+
+<select required>
+<option value="">Destino de interés</option>
+<option>Cantabria</option>
+<option>Asturias</option>
+<option>País Vasco</option>
+<option>Galicia</option>
+</select>
+
+<textarea
+placeholder="Cuéntanos qué tipo de viaje estás imaginando..."
+></textarea>
+
+<button type="submit">
+SOLICITAR PROPUESTA
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
-  <div class="footer-brand">La Perla <span>del Norte</span></div>
-  <div>VIAJES · CULTURA · TRADICIÓN</div>
-  <p>© 2026 La Perla del Norte · Proyecto conceptual de agencia turística</p>
-  <p>Las experiencias y colaboraciones están sujetas a confirmación.</p>
+
+<div class="footer-grid">
+
+<div>
+
+<div class="footer-logo">
+<img src="logo.png" alt="La Perla del Norte">
+</div>
+
+<p>
+Viajes, cultura, gastronomía y experiencias
+auténticas por el norte de España.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Contacto</h3>
+
+<p>+34 942 55 66 77</p>
+<p>+34 688 11 22 33</p>
+<p>Idelnorte@gmail.com</p>
+<p>reservas@laperladecantabria.es</p>
+
+</div>
+
+
+<div>
+
+<h3>Sede conceptual</h3>
+
+<p>La Perla del Norte S.L.</p>
+<p>Paseo de Pereda, 15, Bajo</p>
+<p>39004 Santander, Cantabria</p>
+<p>España</p>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 La Perla del Norte · Proyecto conceptual / académico
+
+</div>
+
 </footer>
+
+
+<script>
+
+function enviarFormulario(event) {
+
+    event.preventDefault();
+
+    alert(
+        "¡Gracias por contactar con La Perla del Norte! " +
+        "Esta demostración del formulario está funcionando correctamente."
+    );
+
+}
+
+</script>
 
 </body>
 </html>
