@@ -1,1896 +1,1095 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="theme-color" content="#091C18">
-<meta name="description" content="La Perla del Norte — Viajes, cultura, gastronomía y experiencias auténticas por el norte de España.">
-
-<title>La Perla del Norte | Viajar con esencia</title>
-
-<style>
-
-/* =========================================================
-   LA PERLA DEL NORTE
-   PALETA VERDE BOSQUE + CHAMPAGNE
-========================================================= */
-
-:root {
-    --night: #091C18;
-    --forest: #102C26;
-    --pine: #163D34;
-    --sage: #31564A;
-    --gold: #C8A96B;
-    --gold-light: #D9C28F;
-    --cream: #F4F1E8;
-    --pearl: #FCFBF7;
-    --text: #233831;
-    --muted: #718078;
-    --white: #FFFFFF;
-
-    --radius: 22px;
-    --shadow: 0 20px 60px rgba(9,28,24,.12);
-    --transition: .35s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    background: var(--pearl);
-    color: var(--text);
-    line-height: 1.6;
-}
-
-img {
-    width: 100%;
-    display: block;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-/* =========================================================
-   NAVBAR
-========================================================= */
-
-.navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 22px 5%;
-    color: white;
-}
-
-.nav-inner {
-    max-width: 1300px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.logo img {
-    width: 72px;
-    height: 72px;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
-.logo-text {
-    line-height: 1.1;
-}
-
-.logo-text strong {
-    display: block;
-    font-size: 19px;
-    letter-spacing: 2px;
-}
-
-.logo-text span {
-    color: var(--gold-light);
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.nav-links a {
-    font-size: 14px;
-    letter-spacing: 1px;
-    transition: var(--transition);
-}
-
-.nav-links a:hover {
-    color: var(--gold-light);
-}
-
-.nav-button {
-    border: 1px solid var(--gold);
-    padding: 11px 18px;
-    border-radius: 30px;
-    color: white;
-}
-
-.nav-button:hover {
-    background: var(--gold);
-    color: var(--night);
-}
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(9,28,24,.94) 0%,
-            rgba(9,28,24,.72) 45%,
-            rgba(9,28,24,.28) 100%
-        ),
-        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85") center/cover no-repeat;
-}
-
-.hero-content {
-    width: min(1300px, 90%);
-    margin: auto;
-    color: white;
-    padding-top: 90px;
-}
-
-.eyebrow {
-    color: var(--gold-light);
-    font-size: 12px;
-    letter-spacing: 4px;
-    margin-bottom: 22px;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    max-width: 780px;
-    font-size: clamp(52px, 8vw, 105px);
-    line-height: .94;
-    font-weight: 400;
-    margin-bottom: 30px;
-}
-
-.hero h1 span {
-    color: var(--gold-light);
-}
-
-.hero p {
-    max-width: 620px;
-    font-family: Arial, sans-serif;
-    color: #e8eee9;
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 35px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 25px;
-    border-radius: 40px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: .8px;
-    transition: var(--transition);
-}
-
-.btn-primary {
-    background: var(--gold);
-    color: var(--night);
-}
-
-.btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-3px);
-}
-
-.btn-outline {
-    border: 1px solid rgba(255,255,255,.55);
-    color: white;
-}
-
-.btn-outline:hover {
-    background: white;
-    color: var(--night);
-}
-
-.scroll {
-    position: absolute;
-    bottom: 30px;
-    left: 5%;
-    color: rgba(255,255,255,.65);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.section {
-    padding: 110px 5%;
-}
-
-.section-inner {
-    max-width: 1300px;
-    margin: auto;
-}
-
-.section-header {
-    max-width: 700px;
-    margin-bottom: 55px;
-}
-
-.section-kicker {
-    color: var(--gold);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.section-title {
-    font-size: clamp(38px, 5vw, 62px);
-    line-height: 1;
-    font-weight: 400;
-    color: var(--forest);
-    margin-bottom: 20px;
-}
-
-.section-description {
-    color: var(--muted);
-    font-family: Arial, sans-serif;
-    font-size: 15px;
-}
-
-/* =========================================================
-   WHY LA PERLA
-========================================================= */
-
-.why {
-    background: var(--cream);
-}
-
-.why-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.why-card {
-    padding: 32px;
-    background: rgba(255,255,255,.55);
-    border: 1px solid rgba(16,44,38,.08);
-    border-radius: 20px;
-    transition: var(--transition);
-}
-
-.why-card:hover {
-    transform: translateY(-7px);
-    box-shadow: var(--shadow);
-}
-
-.why-number {
-    color: var(--gold);
-    font-size: 14px;
-    margin-bottom: 35px;
-}
-
-.why-card h3 {
-    color: var(--forest);
-    font-size: 23px;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.why-card p {
-    color: var(--muted);
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-}
-
-/* =========================================================
-   CATEGORÍAS
-========================================================= */
-
-.categories {
-    background: var(--pearl);
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 18px;
-}
-
-.category-card {
-    position: relative;
-    height: 480px;
-    overflow: hidden;
-    border-radius: var(--radius);
-    grid-column: span 4;
-    color: white;
-    background: var(--forest);
-}
-
-.category-card.large {
-    grid-column: span 6;
-    height: 550px;
-}
-
-.category-card img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform .8s ease;
-}
-
-.category-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            to top,
-            rgba(9,28,24,.96) 0%,
-            rgba(9,28,24,.55) 40%,
-            rgba(9,28,24,.05) 75%
-        );
-}
-
-.category-card:hover img {
-    transform: scale(1.07);
-}
-
-.category-content {
-    position: absolute;
-    z-index: 2;
-    left: 28px;
-    right: 28px;
-    bottom: 28px;
-}
-
-.category-number {
-    color: var(--gold-light);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-}
-
-.category-content h3 {
-    font-size: 34px;
-    font-weight: 400;
-    margin-bottom: 7px;
-}
-
-.category-content p {
-    font-family: Arial, sans-serif;
-    color: #d6dfda;
-    font-size: 13px;
-    max-width: 380px;
-}
-
-.category-arrow {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 43px;
-    height: 43px;
-    border: 1px solid rgba(255,255,255,.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
-
-.category-card:hover .category-arrow {
-    background: var(--gold);
-    color: var(--night);
-    border-color: var(--gold);
-    transform: translateX(5px);
-}
-
-/* =========================================================
-   EXPERIENCIAS
-========================================================= */
-
-.experiences {
-    background: var(--forest);
-    color: white;
-}
-
-.experiences .section-title {
-    color: white;
-}
-
-.experiences .section-description {
-    color: #b9c8c1;
-}
-
-.experience-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.experience-card {
-    background: var(--pine);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: var(--transition);
-}
-
-.experience-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 70px rgba(0,0,0,.25);
-}
-
-.experience-image {
-    height: 230px;
-    overflow: hidden;
-}
-
-.experience-image img {
-    height: 100%;
-    object-fit: cover;
-    transition: .7s ease;
-}
-
-.experience-card:hover .experience-image img {
-    transform: scale(1.06);
-}
-
-.experience-info {
-    padding: 25px;
-}
-
-.experience-tag {
-    color: var(--gold-light);
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.experience-info h3 {
-    font-size: 25px;
-    font-weight: 400;
-    margin: 10px 0;
-}
-
-.experience-info p {
-    color: #b9c8c1;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-}
-
-/* =========================================================
-   SABORES
-========================================================= */
-
-.flavours {
-    background: var(--cream);
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.product-card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(16,44,38,.07);
-    transition: var(--transition);
-}
-
-.product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow);
-}
-
-.product-image {
-    height: 300px;
-    overflow: hidden;
-}
-
-.product-image img {
-    height: 100%;
-    object-fit: cover;
-    transition: .7s ease;
-}
-
-.product-card:hover .product-image img {
-    transform: scale(1.05);
-}
-
-.product-info {
-    padding: 25px;
-}
-
-.product-producer {
-    color: var(--gold);
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.product-info h3 {
-    color: var(--forest);
-    font-size: 27px;
-    font-weight: 400;
-    margin: 7px 0;
-}
-
-.product-info p {
-    color: var(--muted);
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-}
-
-.product-link {
-    display: inline-block;
-    margin-top: 18px;
-    color: var(--forest);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* =========================================================
-   PLANES
-========================================================= */
-
-.plans {
-    background: var(--pearl);
-}
-
-.plans-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.plan {
-    position: relative;
-    padding: 40px 32px;
-    border-radius: 22px;
-    border: 1px solid rgba(16,44,38,.12);
-    transition: var(--transition);
-}
-
-.plan:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow);
-}
-
-.plan.featured {
-    background: var(--forest);
-    color: white;
-    transform: translateY(-15px);
-}
-
-.plan.featured:hover {
-    transform: translateY(-22px);
-}
-
-.plan-label {
-    color: var(--gold);
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.plan h3 {
-    font-size: 36px;
-    font-weight: 400;
-    margin: 15px 0 7px;
-}
-
-.plan p {
-    font-family: Arial, sans-serif;
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 25px;
-}
-
-.plan.featured p {
-    color: #b9c8c1;
-}
-
-.plan ul {
-    list-style: none;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-}
-
-.plan li {
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(128,128,128,.15);
-}
-
-.plan li::before {
-    content: "✦";
-    color: var(--gold);
-    margin-right: 9px;
-}
-
-/* =========================================================
-   OPINIONES
-========================================================= */
-
-.reviews {
-    background: var(--night);
-    color: white;
-}
-
-.reviews .section-title {
-    color: white;
-}
-
-.reviews .section-description {
-    color: #aebdb6;
-}
-
-.review-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.review {
-    padding: 32px;
-    border: 1px solid rgba(255,255,255,.09);
-    background: rgba(255,255,255,.035);
-    border-radius: 20px;
-}
-
-.stars {
-    color: var(--gold-light);
-    letter-spacing: 4px;
-    margin-bottom: 22px;
-}
-
-.review p {
-    color: #d9e0dc;
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 25px;
-}
-
-.review-author {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    color: var(--gold-light);
-    letter-spacing: 1px;
-}
-
-/* =========================================================
-   FAQ
-========================================================= */
-
-.faq {
-    background: var(--cream);
-}
-
-.faq-list {
-    max-width: 850px;
-    margin: auto;
-}
-
-details {
-    border-bottom: 1px solid rgba(16,44,38,.15);
-    padding: 22px 0;
-}
-
-summary {
-    cursor: pointer;
-    list-style: none;
-    color: var(--forest);
-    font-size: 19px;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-summary::after {
-    content: "+";
-    color: var(--gold);
-}
-
-details[open] summary::after {
-    content: "−";
-}
-
-details p {
-    padding-top: 15px;
-    color: var(--muted);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    max-width: 700px;
-}
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta {
-    position: relative;
-    overflow: hidden;
-    background:
-        linear-gradient(rgba(9,28,24,.86), rgba(9,28,24,.94)),
-        url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=85") center/cover;
-    color: white;
-    text-align: center;
-}
-
-.cta-inner {
-    max-width: 800px;
-    margin: auto;
-}
-
-.cta h2 {
-    font-size: clamp(42px, 6vw, 72px);
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 25px;
-}
-
-.cta p {
-    color: #c9d3ce;
-    font-family: Arial, sans-serif;
-    margin-bottom: 30px;
-}
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    background: #061410;
-    color: white;
-    padding: 70px 5% 30px;
-}
-
-.footer-inner {
-    max-width: 1300px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 50px;
-}
-
-.footer-brand h3 {
-    font-size: 25px;
-    font-weight: 400;
-}
-
-.footer-brand p {
-    color: #91a099;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    max-width: 350px;
-    margin-top: 15px;
-}
-
-footer h4 {
-    color: var(--gold-light);
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-}
-
-footer ul {
-    list-style: none;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    color: #a8b4ae;
-}
-
-footer li {
-    margin-bottom: 9px;
-}
-
-.footer-bottom {
-    max-width: 1300px;
-    margin: 50px auto 0;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,.08);
-    color: #6e7d76;
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-}
-
-/* =========================================================
-   WHATSAPP
-========================================================= */
-
-.whatsapp {
-    position: fixed;
-    right: 22px;
-    bottom: 22px;
-    z-index: 200;
-    background: #1d8f59;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 50px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
-    transition: var(--transition);
-}
-
-.whatsapp:hover {
-    transform: translateY(-4px);
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 950px) {
-
-    .nav-links {
-        display: none;
-    }
-
-    .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .category-card,
-    .category-card.large {
-        grid-column: span 6;
-    }
-
-    .experience-grid,
-    .product-grid,
-    .plans-grid,
-    .review-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-inner {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 650px) {
-
-    .navbar {
-        padding: 15px 5%;
-    }
-
-    .logo img {
-        width: 55px;
-        height: 55px;
-    }
-
-    .logo-text {
-        display: none;
-    }
-
-    .hero {
-        min-height: 90vh;
-    }
-
-    .hero h1 {
-        font-size: 55px;
-    }
-
-    .section {
-        padding: 75px 5%;
-    }
-
-    .why-grid,
-    .experience-grid,
-    .product-grid,
-    .plans-grid,
-    .review-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .category-grid {
-        display: block;
-    }
-
-    .category-card,
-    .category-card.large {
-        height: 430px;
-        margin-bottom: 18px;
-    }
-
-    .plan.featured {
-        transform: none;
-    }
-
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
-    .whatsapp {
-        right: 14px;
-        bottom: 14px;
-    }
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Perla del Norte - Agencia de Viajes y Experiencias en Cantabria</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#0b312e',
+                            900: '#0d3b38',
+                            950: '#062422',
+                        },
+                        gold: {
+                            300: '#fef3c7',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#d4af37',
+                            700: '#b48b28',
+                        },
+                        cream: {
+                            50: '#fdfbf7',
+                            100: '#f9f6f0',
+                            200: '#f3ede2',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d3b38;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+    </style>
 </head>
+<body class="bg-cream-50 text-gray-800 font-sans antialiased selection:bg-gold-500 selection:text-emerald-950">
 
-<body>
-
-<!-- =====================================================
-     NAVEGACIÓN
-===================================================== -->
-
-<header class="navbar">
-
-    <div class="nav-inner">
-
-        <a href="#inicio" class="logo">
-
-            <img src="logo.png"
-                 alt="La Perla del Norte">
-
-            <div class="logo-text">
-                <strong>LA PERLA</strong>
-                <span>DEL NORTE</span>
+    <!-- TOP HEADER / ANNOUNCEMENT BAR -->
+    <div class="bg-emerald-950 text-gold-400 text-xs py-2 px-4 border-b border-gold-600/30">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <span><i class="fa-solid fa-location-dot mr-1 text-gold-500"></i> Cantabria & Norte de España</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-envelope mr-1 text-gold-500"></i> info@laperladelnorte.com</span>
             </div>
-
-        </a>
-
-        <nav class="nav-links">
-
-            <a href="#inicio">Inicio</a>
-            <a href="#experiencias">Experiencias</a>
-            <a href="#destinos">Destinos</a>
-            <a href="#sabores">Sabores</a>
-            <a href="#opiniones">Opiniones</a>
-
-            <a href="#contacto" class="nav-button">
-                Planifica tu viaje
-            </a>
-
-        </nav>
-
-    </div>
-
-</header>
-
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<section class="hero" id="inicio">
-
-    <div class="hero-content">
-
-        <div class="eyebrow">
-            Agencia de viajes · Norte de España
-        </div>
-
-        <h1>
-            El norte no se visita.<br>
-            <span>Se vive.</span>
-        </h1>
-
-        <p>
-            Descubre paisajes, cultura, gastronomía y tradiciones
-            a través de experiencias diseñadas para conectar con
-            la esencia del norte de España.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#experiencias" class="btn btn-primary">
-                Descubrir experiencias
-            </a>
-
-            <a href="#destinos" class="btn btn-outline">
-                Explorar destinos
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="scroll">
-        ↓ DESCUBRE EL NORTE
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     POR QUÉ LA PERLA
-===================================================== -->
-
-<section class="section why">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Nuestra esencia
+            <div class="flex items-center space-x-4">
+                <span class="hidden sm:inline"><i class="fa-solid fa-phone mr-1 text-gold-500"></i> +34 942 123 456</span>
+                <div class="flex space-x-2">
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
             </div>
-
-            <h2 class="section-title">
-                Viajar diferente
-            </h2>
-
-            <p class="section-description">
-                No queremos enseñarte únicamente lugares.
-                Queremos que conozcas la historia, los sabores
-                y las personas que hacen especial cada rincón.
-            </p>
-
         </div>
-
-
-        <div class="why-grid">
-
-            <article class="why-card">
-                <div class="why-number">01</div>
-                <h3>Autenticidad</h3>
-                <p>
-                    Experiencias conectadas con la cultura
-                    y las tradiciones locales.
-                </p>
-            </article>
-
-            <article class="why-card">
-                <div class="why-number">02</div>
-                <h3>Cercanía</h3>
-                <p>
-                    Un acompañamiento cercano antes,
-                    durante y después del viaje.
-                </p>
-            </article>
-
-            <article class="why-card">
-                <div class="why-number">03</div>
-                <h3>Gastronomía</h3>
-                <p>
-                    Descubre el norte también a través
-                    de sus productos y productores.
-                </p>
-            </article>
-
-            <article class="why-card">
-                <div class="why-number">04</div>
-                <h3>Cuidado</h3>
-                <p>
-                    Cada itinerario está pensado para
-                    disfrutar sin prisas.
-                </p>
-            </article>
-
-        </div>
-
     </div>
 
-</section>
-
-
-<!-- =====================================================
-     DESTINOS / CATEGORÍAS
-===================================================== -->
-
-<section class="section categories" id="destinos">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Elige tu paisaje
-            </div>
-
-            <h2 class="section-title">
-                El norte tiene muchas formas
-            </h2>
-
-            <p class="section-description">
-                Mar, montaña, historia y sabores.
-                Elige cómo quieres comenzar a descubrirlo.
-            </p>
-
-        </div>
-
-
-        <div class="category-grid">
-
-            <article class="category-card large">
-
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=85"
-                     alt="Costa del Cantábrico">
-
-                <div class="category-content">
-
-                    <div class="category-number">
-                        01 · COSTA
+    <!-- MAIN NAVIGATION -->
+    <nav class="sticky top-0 z-40 bg-emerald-900/95 backdrop-blur-md border-b border-gold-600/40 text-white transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-full border-2 border-gold-500 flex items-center justify-center bg-emerald-950 group-hover:border-white transition-colors duration-300 shadow-md">
+                        <i class="fa-solid fa-shell text-gold-400 text-2xl transform group-hover:scale-110 transition-transform"></i>
                     </div>
-
-                    <h3>Mar y costa</h3>
-
-                    <p>
-                        Acantilados, playas y pueblos
-                        marineros frente al Cantábrico.
-                    </p>
-
-                    <div class="category-arrow">
-                        →
+                    <div>
+                        <span class="font-serif text-xl tracking-wider font-bold block text-gold-300 uppercase leading-none">La Perla</span>
+                        <span class="font-sans text-xs tracking-widest text-emerald-200 uppercase font-light">del Norte · Viajes</span>
                     </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="category-card">
-
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85"
-                     alt="Montañas del norte de España">
-
-                <div class="category-content">
-
-                    <div class="category-number">
-                        02 · NATURALEZA
-                    </div>
-
-                    <h3>Montaña</h3>
-
-                    <p>
-                        Valles verdes y paisajes
-                        que invitan a respirar.
-                    </p>
-
-                    <div class="category-arrow">
-                        →
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="category-card">
-
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=85"
-                     alt="Gastronomía del norte">
-
-                <div class="category-content">
-
-                    <div class="category-number">
-                        03 · SABORES
-                    </div>
-
-                    <h3>Gastronomía</h3>
-
-                    <p>
-                        El norte también se descubre
-                        a través de sus sabores.
-                    </p>
-
-                    <div class="category-arrow">
-                        →
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <article class="category-card large">
-
-                <img src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=1000&q=85"
-                     alt="Cultura y patrimonio">
-
-                <div class="category-content">
-
-                    <div class="category-number">
-                        04 · PATRIMONIO
-                    </div>
-
-                    <h3>Historia y tradición</h3>
-
-                    <p>
-                        Lugares, historias y tradiciones
-                        que han dado forma al norte.
-                    </p>
-
-                    <div class="category-arrow">
-                        →
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     EXPERIENCIAS
-===================================================== -->
-
-<section class="section experiences" id="experiencias">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Experiencias
-            </div>
-
-            <h2 class="section-title">
-                No reserves un viaje.<br>
-                Reserva una historia.
-            </h2>
-
-            <p class="section-description">
-                Diseñamos propuestas para descubrir el norte
-                desde una perspectiva diferente.
-            </p>
-
-        </div>
-
-
-        <div class="experience-grid">
-
-            <article class="experience-card">
-
-                <div class="experience-image">
-                    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=85"
-                         alt="Experiencia junto al mar">
-                </div>
-
-                <div class="experience-info">
-
-                    <div class="experience-tag">
-                        Mar · Naturaleza
-                    </div>
-
-                    <h3>Entre mar y montaña</h3>
-
-                    <p>
-                        Una ruta para descubrir la costa
-                        y los paisajes verdes de Cantabria.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="experience-card">
-
-                <div class="experience-image">
-                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
-                         alt="Gastronomía del norte">
-                </div>
-
-                <div class="experience-info">
-
-                    <div class="experience-tag">
-                        Gastronomía
-                    </div>
-
-                    <h3>Sabores del Cantábrico</h3>
-
-                    <p>
-                        Una experiencia gastronómica
-                        alrededor de productos regionales.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="experience-card">
-
-                <div class="experience-image">
-                    <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1000&q=85"
-                         alt="Patrimonio del norte">
-                </div>
-
-                <div class="experience-info">
-
-                    <div class="experience-tag">
-                        Cultura
-                    </div>
-
-                    <h3>Historia y tradición</h3>
-
-                    <p>
-                        Un recorrido por pueblos, patrimonio
-                        y costumbres del norte.
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SABORES DEL NORTE
-===================================================== -->
-
-<section class="section flavours" id="sabores">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Sabores del norte
-            </div>
-
-            <h2 class="section-title">
-                Productos que cuentan una historia
-            </h2>
-
-            <p class="section-description">
-                Queremos que el viaje continúe incluso
-                después de volver a casa.
-            </p>
-
-        </div>
-
-
-        <div class="product-grid">
-
-            <article class="product-card">
-
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1000&q=85"
-                         alt="Sobaos de Casa El Macho">
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-producer">
-                        Casa El Macho
-                    </div>
-
-                    <h3>Sobaos Pasiegos</h3>
-
-                    <p>
-                        Uno de los sabores más reconocibles
-                        de Cantabria.
-                    </p>
-
-                    <a href="https://casaelmacho.com/"
-                       target="_blank"
-                       class="product-link">
-                        CONOCER PRODUCTOR →
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8 font-medium text-sm">
+                    <a href="#inicio" class="text-white hover:text-gold-400 transition">Inicio</a>
+                    <a href="#pilares" class="text-emerald-100 hover:text-gold-400 transition">La Experiencia</a>
+                    <a href="#catalogo" class="text-emerald-100 hover:text-gold-400 transition flex items-center gap-1">
+                        Catálogo <span class="bg-gold-500 text-emerald-950 text-[10px] font-bold px-1.5 py-0.5 rounded-full uppercase">Nuevo</span>
                     </a>
-
+                    <a href="#planes" class="text-emerald-100 hover:text-gold-400 transition">Planes</a>
+                    <a href="#faq" class="text-emerald-100 hover:text-gold-400 transition">FAQ</a>
+                    <a href="#contacto" class="text-emerald-100 hover:text-gold-400 transition">Contacto</a>
                 </div>
 
-            </article>
-
-
-            <article class="product-card">
-
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
-                         alt="Anchoas de Conservas Hoya">
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-producer">
-                        Conservas Hoya
-                    </div>
-
-                    <h3>Anchoas</h3>
-
-                    <p>
-                        El sabor del Cantábrico
-                        directamente desde Santoña.
-                    </p>
-
-                    <a href="https://conservashoya.com/"
-                       target="_blank"
-                       class="product-link">
-                        CONOCER PRODUCTOR →
+                <!-- CTA Button -->
+                <div class="hidden sm:block">
+                    <a href="#catalogo" onclick="filterCatalog('all')" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-emerald-950 font-semibold px-5 py-2.5 rounded-full shadow-lg hover:shadow-gold-500/30 transition duration-300 flex items-center gap-2 text-sm border border-gold-300/40">
+                        <i class="fa-solid fa-compass"></i> Explorar Experiencias
                     </a>
-
                 </div>
 
-            </article>
-
-
-            <article class="product-card">
-
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=85"
-                         alt="Bodega Miradorio">
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gold-400 hover:text-white p-2 rounded-md focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
-
-                <div class="product-info">
-
-                    <div class="product-producer">
-                        Bodegas Miradorio
-                    </div>
-
-                    <h3>Vinos del norte</h3>
-
-                    <p>
-                        Vino, paisaje y tradición
-                        en una misma experiencia.
-                    </p>
-
-                    <a href="https://miradorio.com/"
-                       target="_blank"
-                       class="product-link">
-                        CONOCER BODEGA →
-                    </a>
-
-                </div>
-
-            </article>
-
+            </div>
         </div>
 
-    </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-emerald-950 border-b border-gold-600/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="block py-2 text-white hover:text-gold-400">Inicio</a>
+            <a href="#pilares" class="block py-2 text-emerald-100 hover:text-gold-400">La Experiencia</a>
+            <a href="#catalogo" class="block py-2 text-emerald-100 hover:text-gold-400">Catálogo Completo</a>
+            <a href="#planes" class="block py-2 text-emerald-100 hover:text-gold-400">Planes de Viaje</a>
+            <a href="#faq" class="block py-2 text-emerald-100 hover:text-gold-400">Preguntas Frecuentes</a>
+            <a href="#contacto" class="block py-2 text-emerald-100 hover:text-gold-400">Contacto</a>
+            <a href="#catalogo" class="inline-block mt-2 w-full text-center bg-gold-500 text-emerald-950 font-bold py-2 rounded-full">Ver Catálogo de Experiencias</a>
+        </div>
+    </nav>
 
-</section>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-emerald-950">
+        <!-- Background Overlay Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80" alt="Costa de Cantabria" class="w-full h-full object-cover opacity-40 scale-105 transform hover:scale-100 transition duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-emerald-950/60 to-transparent"></div>
+        </div>
 
-
-<!-- =====================================================
-     PLANES
-===================================================== -->
-
-<section class="section plans">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Elige tu forma de viajar
+        <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center text-white pt-12 pb-20">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 bg-emerald-900/80 border border-gold-500/50 rounded-full px-4 py-1.5 mb-6 backdrop-blur-md shadow-lg">
+                <i class="fa-solid fa-crown text-gold-400 text-xs"></i>
+                <span class="text-xs uppercase tracking-widest text-gold-300 font-semibold">Agencia de Viajes Boutique en Cantabria</span>
             </div>
 
-            <h2 class="section-title">
-                Tres maneras de vivir el norte
-            </h2>
+            <!-- Title -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight mb-6 leading-tight text-white">
+                El Norte no se visita. <br>
+                <span class="italic font-display text-gold-400 font-normal">Se vive y se saborea.</span>
+            </h1>
 
-        </div>
-
-
-        <div class="plans-grid">
-
-            <article class="plan">
-
-                <div class="plan-label">
-                    01 · Esencia
-                </div>
-
-                <h3>Esencia</h3>
-
-                <p>
-                    El norte a tu manera.
-                </p>
-
-                <ul>
-                    <li>Rutas esenciales</li>
-                    <li>Experiencias locales</li>
-                    <li>Recomendaciones gastronómicas</li>
-                    <li>Planificación personalizada</li>
-                </ul>
-
-            </article>
-
-
-            <article class="plan featured">
-
-                <div class="plan-label">
-                    02 · Horizonte
-                </div>
-
-                <h3>Horizonte</h3>
-
-                <p>
-                    Compartir hace el viaje.
-                </p>
-
-                <ul>
-                    <li>Viajes para familias y grupos</li>
-                    <li>Itinerarios personalizados</li>
-                    <li>Experiencias gastronómicas</li>
-                    <li>Acompañamiento durante el viaje</li>
-                </ul>
-
-            </article>
-
-
-            <article class="plan">
-
-                <div class="plan-label">
-                    03 · Privilege
-                </div>
-
-                <h3>Privilege</h3>
-
-                <p>
-                    Donde termina lo habitual.
-                </p>
-
-                <ul>
-                    <li>Experiencias exclusivas</li>
-                    <li>Atención personalizada</li>
-                    <li>Propuestas premium</li>
-                    <li>Itinerarios a medida</li>
-                </ul>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     OPINIONES
-===================================================== -->
-
-<section class="section reviews" id="opiniones">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Historias que vuelven
-            </div>
-
-            <h2 class="section-title">
-                Opiniones de ejemplo
-            </h2>
-
-            <p class="section-description">
-                Este espacio está preparado para incorporar
-                futuras reseñas verificadas de nuestros viajeros.
+            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-emerald-100/90 font-light mb-10 leading-relaxed">
+                Descubre la esencia más pura de Cantabria a través de experiencias únicas, gastronomía con productores locales, rutas de naturaleza e itinerarios a medida.
             </p>
 
-        </div>
-
-
-        <div class="review-grid">
-
-            <article class="review">
-
-                <div class="stars">
-                    ★★★★★
+            <!-- Quick Search Bar in Hero -->
+            <div class="max-w-3xl mx-auto bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-gold-500/30 shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gold-400"></i>
+                        <input type="text" id="hero-search-input" placeholder="Buscar experiencias o lugares..." class="w-full pl-10 pr-4 py-3 bg-emerald-950/80 border border-gold-500/30 rounded-xl text-white placeholder-emerald-300/60 text-sm focus:outline-none focus:border-gold-400">
+                    </div>
+                    <div class="relative">
+                        <i class="fa-solid fa-filter absolute left-3 top-1/2 -translate-y-1/2 text-gold-400"></i>
+                        <select id="hero-category-select" class="w-full pl-10 pr-4 py-3 bg-emerald-950/80 border border-gold-500/30 rounded-xl text-emerald-100 text-sm focus:outline-none focus:border-gold-400 appearance-none">
+                            <option value="all">Todas las Categorías</option>
+                            <option value="sabores">01. Sabores del Norte</option>
+                            <option value="vistas">02. Vistas del Norte</option>
+                            <option value="souvenirs">03. Souvenirs de la Tierra</option>
+                        </select>
+                    </div>
+                    <button onclick="applyHeroFilter()" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-emerald-950 font-bold py-3 px-6 rounded-xl transition duration-300 flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-compass"></i> Explorar Ahora
+                    </button>
                 </div>
-
-                <p>
-                    “Un viaje pensado hasta el último detalle.
-                    Descubrimos lugares que no habríamos
-                    encontrado por nuestra cuenta.”
-                </p>
-
-                <div class="review-author">
-                    EXPERIENCIA DE EJEMPLO
-                </div>
-
-            </article>
-
-
-            <article class="review">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    “La combinación entre naturaleza,
-                    cultura y gastronomía hizo que el viaje
-                    fuera mucho más especial.”
-                </p>
-
-                <div class="review-author">
-                    EXPERIENCIA DE EJEMPLO
-                </div>
-
-            </article>
-
-
-            <article class="review">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    “Una forma diferente de conocer Cantabria,
-                    con tiempo para disfrutar y descubrir.”
-                </p>
-
-                <div class="review-author">
-                    EXPERIENCIA DE EJEMPLO
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     FAQ
-===================================================== -->
-
-<section class="section faq">
-
-    <div class="section-inner">
-
-        <div class="section-header">
-
-            <div class="section-kicker">
-                Preguntas frecuentes
             </div>
 
-            <h2 class="section-title">
-                Antes de comenzar
-            </h2>
-
+            <!-- Stats/Badges -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-center max-w-4xl mx-auto">
+                <div class="border-r border-gold-500/20 last:border-0 p-2">
+                    <div class="text-2xl font-serif font-bold text-gold-400">100%</div>
+                    <div class="text-xs text-emerald-200">Auténtico & Local</div>
+                </div>
+                <div class="border-r border-gold-500/20 last:border-0 p-2">
+                    <div class="text-2xl font-serif font-bold text-gold-400">17+</div>
+                    <div class="text-xs text-emerald-200">Experiencias Exclusivas</div>
+                </div>
+                <div class="border-r border-gold-500/20 last:border-0 p-2">
+                    <div class="text-2xl font-serif font-bold text-gold-400">Grupos</div>
+                    <div class="text-xs text-emerald-200">Reducidos o Privados</div>
+                </div>
+                <div class="p-2">
+                    <div class="text-2xl font-serif font-bold text-gold-400">Atención</div>
+                    <div class="text-xs text-emerald-200">Personalizada</div>
+                </div>
+            </div>
         </div>
+    </section>
 
+    <!-- PILARES / PROPUESTA DE VALOR -->
+    <section id="pilares" class="py-20 bg-cream-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase font-semibold text-gold-600 tracking-widest mb-2">Más que un viaje, una experiencia</h2>
+                <p class="text-3xl sm:text-4xl font-serif font-bold text-emerald-950">Descubre la esencia de Cantabria con nosotros</p>
+                <div class="w-16 h-0.5 bg-gold-500 mx-auto mt-4"></div>
+            </div>
 
-        <div class="faq-list">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Pilar 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gold-500/20 text-center group hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-emerald-900 text-gold-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:bg-gold-500 group-hover:text-emerald-950 transition-colors duration-300 shadow-md">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-950 mb-3">Gastronomía Auténtica</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Sobaos pasiegos, quesos de orujo, bodegas costeras y anchoas artesanales de Santoña directamente de productores.
+                    </p>
+                </div>
 
-            <details>
-                <summary>
-                    ¿Puedo personalizar mi viaje?
-                </summary>
+                <!-- Pilar 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gold-500/20 text-center group hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-emerald-900 text-gold-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:bg-gold-500 group-hover:text-emerald-950 transition-colors duration-300 shadow-md">
+                        <i class="fa-solid fa-mountain-sun"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-950 mb-3">Naturaleza y Aventura</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Rutas por Costa Quebrada, Picos de Europa, Ruta del Cares y senderismo guiado con vistas espectaculares.
+                    </p>
+                </div>
 
-                <p>
-                    Sí. Podemos adaptar las experiencias,
-                    duración y ritmo del viaje a las necesidades
-                    de cada grupo.
-                </p>
-            </details>
+                <!-- Pilar 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gold-500/20 text-center group hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-emerald-900 text-gold-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:bg-gold-500 group-hover:text-emerald-950 transition-colors duration-300 shadow-md">
+                        <i class="fa-solid fa-landmark"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-950 mb-3">Cultura y Tradición</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Ruta Lebaniega, pueblos con encanto como San Vicente, Santillana y joyas de la costa astur-cántabra.
+                    </p>
+                </div>
 
-
-            <details>
-                <summary>
-                    ¿Organizáis viajes para familias?
-                </summary>
-
-                <p>
-                    Sí. Contamos con propuestas pensadas
-                    para familias y grupos.
-                </p>
-            </details>
-
-
-            <details>
-                <summary>
-                    ¿Puedo añadir experiencias gastronómicas?
-                </summary>
-
-                <p>
-                    Sí. Podemos incorporar visitas y
-                    experiencias relacionadas con productos
-                    y gastronomía regional.
-                </p>
-            </details>
-
-
-            <details>
-                <summary>
-                    ¿Trabajáis con grupos?
-                </summary>
-
-                <p>
-                    Sí. Podemos diseñar propuestas adaptadas
-                    a diferentes tamaños de grupo.
-                </p>
-            </details>
-
+                <!-- Pilar 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gold-500/20 text-center group hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-emerald-900 text-gold-400 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl group-hover:bg-gold-500 group-hover:text-emerald-950 transition-colors duration-300 shadow-md">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-emerald-950 mb-3">Experiencias A Medida</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Atención personalizada, itinerarios adaptados, grupos reducidos e incentivos para familias y empresas.
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
+    <!-- CATÁLOGO DE EXPERIENCIAS (MAIN SECTION) -->
+    <section id="catalogo" class="py-20 bg-cream-50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block px-3 py-1 bg-gold-500/10 border border-gold-500/30 rounded-full text-gold-700 text-xs font-bold uppercase tracking-widest mb-3">
+                    Catálogo Oficial de Experiencias
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold text-emerald-950 mb-4">
+                    Selecciona tu próxima aventura
+                </h2>
+                <p class="text-gray-600 text-base sm:text-lg">
+                    Explora nuestras experiencias divididas por temática: gastronomía, rutas de senderismo y productos típicos artesanales.
+                </p>
+            </div>
+
+            <!-- SEARCH AND FILTERS BAR -->
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-md border border-gold-500/20 mb-10">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    
+                    <!-- Filter Tabs -->
+                    <div class="flex flex-wrap gap-2 w-full md:w-auto justify-center md:justify-start" id="category-tabs">
+                        <button onclick="filterCatalog('all')" id="btn-all" class="cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-emerald-900 text-gold-400 shadow-md">
+                            Todos (17)
+                        </button>
+                        <button onclick="filterCatalog('sabores')" id="btn-sabores" class="cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-emerald-900/10">
+                            <i class="fa-solid fa-wine-glass mr-1"></i> 01. Sabores del Norte
+                        </button>
+                        <button onclick="filterCatalog('vistas')" id="btn-vistas" class="cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-emerald-900/10">
+                            <i class="fa-solid fa-person-hiking mr-1"></i> 02. Vistas del Norte
+                        </button>
+                        <button onclick="filterCatalog('souvenirs')" id="btn-souvenirs" class="cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-emerald-900/10">
+                            <i class="fa-solid fa-gift mr-1"></i> 03. Souvenirs
+                        </button>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="catalog-search" oninput="searchCatalog()" placeholder="Buscar experiencia o souvenir..." class="w-full pl-9 pr-4 py-2.5 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition">
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY INFOS / BANNERS -->
+            <div id="category-info" class="mb-8 p-4 rounded-xl bg-emerald-900 text-white flex items-center justify-between border-l-4 border-gold-500">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-info text-gold-400 text-xl"></i>
+                    <div>
+                        <h4 id="cat-info-title" class="font-serif font-bold text-gold-300">Mostrando Todas las Opciones</h4>
+                        <p id="cat-info-desc" class="text-xs text-emerald-100">Haz clic en cualquier opción para ver la ficha completa, detalles y reservar.</p>
+                    </div>
+                </div>
+                <span id="cat-count-badge" class="bg-gold-500 text-emerald-950 font-bold text-xs px-3 py-1 rounded-full">17 ítems</span>
+            </div>
+
+            <!-- CATALOG GRID -->
+            <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javascript will inject the cards here dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-dashed border-gray-300">
+                <i class="fa-solid fa-compass-slash text-4xl text-gray-400 mb-3"></i>
+                <h3 class="text-xl font-serif font-bold text-emerald-950 mb-1">No se encontraron experiencias</h3>
+                <p class="text-gray-500 text-sm mb-4">Intenta cambiando el filtro o la búsqueda realizada.</p>
+                <button onclick="resetFilters()" class="bg-gold-500 text-emerald-950 font-bold px-4 py-2 rounded-lg text-sm">Ver todo el catálogo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PLANES Y PAQUETES DE VIAJE -->
+    <section id="planes" class="py-20 bg-emerald-950 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold-400 text-xs uppercase font-semibold tracking-widest">Planes de Viaje Integrales</span>
+                <h2 class="text-3xl sm:text-5xl font-serif font-bold mt-2">Modalidades a tu Medida</h2>
+                <p class="text-emerald-200/80 text-sm sm:text-base mt-3">Combinamos alojamiento, rutas guiadas y catas gastronómicas para que no tengas que preocuparte por nada.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan Esencia -->
+                <div class="bg-emerald-900/60 border border-emerald-700/50 rounded-2xl p-8 flex flex-col justify-between hover:border-gold-500/50 transition duration-300 relative">
+                    <div>
+                        <div class="text-gold-400 text-sm font-semibold uppercase tracking-wider mb-2">Opción Autónoma</div>
+                        <h3 class="text-2xl font-serif font-bold mb-4">Esencia</h3>
+                        <p class="text-emerald-100/70 text-sm mb-6">Para viajeros independientes que buscan descubrir Cantabria a su propio ritmo con un itinerario trazado por expertos.</p>
+                        <ul class="space-y-3 text-sm text-emerald-200 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Itinerario digital personalizado</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Reservas en queso/bodegas incluidas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Soporte vía WhatsApp 24/7</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Mapa con paradas secretas recomendadas</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">Consultar Plan Esencia</a>
+                </div>
+
+                <!-- Plan Horizonte (Destacado) -->
+                <div class="bg-gradient-to-b from-emerald-900 to-emerald-950 border-2 border-gold-500 rounded-2xl p-8 flex flex-col justify-between transform md:-translate-y-4 shadow-2xl relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold-500 text-emerald-950 text-xs uppercase font-bold px-4 py-1 rounded-full shadow">
+                        Más Popular
+                    </div>
+                    <div>
+                        <div class="text-gold-400 text-sm font-semibold uppercase tracking-wider mb-2">Familias & Grupos</div>
+                        <h3 class="text-2xl font-serif font-bold mb-4 text-gold-300">Horizonte</h3>
+                        <p class="text-emerald-100/80 text-sm mb-6">La combinación perfecta entre rutas de naturaleza en grupo pequeño y visitas gastronómicas guiadas.</p>
+                        <ul class="space-y-3 text-sm text-emerald-100 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Guía local experto durante las rutas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Transporte en minivan privada opcional</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Catas completas y almuerzo tradicional</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Entradas a parques y teleférico incluidas</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 bg-gold-500 hover:bg-gold-400 text-emerald-950 font-bold rounded-xl transition shadow-lg">Solicitar Plan Horizonte</a>
+                </div>
+
+                <!-- Plan Privilege -->
+                <div class="bg-emerald-900/60 border border-emerald-700/50 rounded-2xl p-8 flex flex-col justify-between hover:border-gold-500/50 transition duration-300">
+                    <div>
+                        <div class="text-gold-400 text-sm font-semibold uppercase tracking-wider mb-2">Exclusivo & VIP</div>
+                        <h3 class="text-2xl font-serif font-bold mb-4">Privilege</h3>
+                        <p class="text-emerald-100/70 text-sm mb-6">Experiencia de lujo total. Talleres gastronómicos privados, acceso exclusivo a bodegas y atención de chofer VIP.</p>
+                        <ul class="space-y-3 text-sm text-emerald-200 mb-8">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Guía privado exclusivo para ti o tu pareja</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Menús degustación con maridaje en estrellas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Lote de bienvenida Souvenirs Gourmet gratis</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Asistencia personalizada total</li>
+                        </ul>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-3 bg-emerald-800 hover:bg-emerald-700 text-white font-semibold rounded-xl transition">Consultar Plan Privilege</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES (FAQ) -->
+    <section id="faq" class="py-20 bg-cream-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-xs uppercase font-semibold text-gold-600 tracking-widest mb-2">Dudas habituales</h2>
+                <p class="text-3xl font-serif font-bold text-emerald-950">Preguntas Frecuentes</p>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="w-full p-5 text-left font-serif font-semibold text-emerald-950 flex justify-between items-center focus:outline-none" onclick="toggleFaq(1)">
+                        <span>¿Cómo funcionan las reservas de las experiencias?</span>
+                        <i id="faq-icon-1" class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-1" class="hidden px-5 pb-5 text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        Puedes reservar directamente seleccionando la experiencia en el catálogo y haciendo clic en "Reservar / Consultar". Te redirigirá instantáneamente a nuestro canal de WhatsApp o al formulario de contacto rápido.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="w-full p-5 text-left font-serif font-semibold text-emerald-950 flex justify-between items-center focus:outline-none" onclick="toggleFaq(2)">
+                        <span>¿Los precios de las rutas de senderismo incluyen transporte o guía?</span>
+                        <i id="faq-icon-2" class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-2" class="hidden px-5 pb-5 text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        Sí, todas nuestras experiencias de la sección "Vistas del Norte" incluyen guía de montaña acreditado, seguro de actividad y gestión de permisos necesarios (como teleférico o accesos protegidos).
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="w-full p-5 text-left font-serif font-semibold text-emerald-950 flex justify-between items-center focus:outline-none" onclick="toggleFaq(3)">
+                        <span>¿Hacen envíos de los souvenirs artesanales fuera de Cantabria?</span>
+                        <i id="faq-icon-3" class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-3" class="hidden px-5 pb-5 text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        ¡Por supuesto! Enviamos el "Lote Gourmet Cántabro" y los recuerdos artesanales a toda España peninsular e Islas Baleares con empaquetado térmico para mantener la frescura de los productos.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    <button class="w-full p-5 text-left font-serif font-semibold text-emerald-950 flex justify-between items-center focus:outline-none" onclick="toggleFaq(4)">
+                        <span>¿Es posible personalizar una ruta para un grupo privado?</span>
+                        <i id="faq-icon-4" class="fa-solid fa-chevron-down text-gold-600 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-ans-4" class="hidden px-5 pb-5 text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        Totalmente. En La Perla del Norte somos especialistas en personalizar rutas para familias, grupos de amigos o eventos de empresa combinando gastronomía y naturaleza a medida.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y UBICACIÓN -->
+    <section id="contacto" class="py-20 bg-cream-50 relative border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Info Left -->
+                <div>
+                    <span class="text-gold-600 text-xs font-bold uppercase tracking-widest">Atención Cercana</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-emerald-950 mt-1 mb-6">Tu próxima aventura comienza aquí</h2>
+                    <p class="text-gray-600 leading-relaxed mb-8">
+                        ¿Tienes dudas sobre qué experiencia o ruta elegir? Escríbenos o llámanos y te ayudaremos a diseñar la estancia perfecta en Cantabria.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-emerald-950">Oficina Principal</h4>
+                                <p class="text-sm text-gray-600">Santander / San Vicente de la Barquera, Cantabria (España)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-emerald-950">Teléfono & WhatsApp</h4>
+                                <p class="text-sm text-gray-600">+34 942 123 456 / +34 688 11 22 33</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-900 text-gold-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-emerald-950">Correo Electrónico</h4>
+                                <p class="text-sm text-gray-600">info@laperladelnorte.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Right -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold-500/20">
+                    <h3 class="text-xl font-serif font-bold text-emerald-950 mb-6">Solicitar Información o Reserva</h3>
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Nombre Completo</label>
+                            <input type="text" required placeholder="Tu nombre..." class="w-full px-4 py-3 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Email</label>
+                                <input type="email" required placeholder="ejemplo@email.com" class="w-full px-4 py-3 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Teléfono</label>
+                                <input type="tel" placeholder="+34 600 000 000" class="w-full px-4 py-3 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Experiencia de Interés</label>
+                            <select id="form-experience-select" class="w-full px-4 py-3 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500 text-gray-700">
+                                <option value="general">Consulta General / A Medida</option>
+                                <option value="01">01. Sobaos y Queserías (150€)</option>
+                                <option value="02">02. Queserías Valles Pasiegos (150€)</option>
+                                <option value="06">06. Camino Lebaniego (450€)</option>
+                                <option value="07">07. Ruta del Cares (140€)</option>
+                                <option value="11">11. Picos de Europa (180€)</option>
+                                <option value="13">13. Lote Gourmet Cántabro (35€)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-600 mb-1">Mensaje o Detalles del Viaje</label>
+                            <textarea rows="4" placeholder="¿En qué fechas planeas viajar? ¿Cuántas personas?" class="w-full px-4 py-3 bg-cream-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-gold-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-emerald-900 hover:bg-emerald-950 text-gold-400 font-bold py-3 px-6 rounded-xl transition duration-300 shadow-md">
+                            Enviar Solicitud
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-emerald-950 text-emerald-200 py-12 border-t border-gold-600/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full border border-gold-500 flex items-center justify-center bg-emerald-900">
+                            <i class="fa-solid fa-shell text-gold-400 text-xl"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-gold-300">LA PERLA DEL NORTE</span>
+                    </div>
+                    <p class="text-xs text-emerald-300/80 leading-relaxed">
+                        Agencia de viajes boutique especializada en Cantabria. Naturaleza, gastronomía tradicional y experiencias inolvidables.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2">Catálogo</h4>
+                    <ul class="space-y-2 text-xs text-emerald-300">
+                        <li><a href="#catalogo" onclick="filterCatalog('sabores')" class="hover:text-gold-400">Sabores del Norte</a></li>
+                        <li><a href="#catalogo" onclick="filterCatalog('vistas')" class="hover:text-gold-400">Vistas y Rutas</a></li>
+                        <li><a href="#catalogo" onclick="filterCatalog('souvenirs')" class="hover:text-gold-400">Souvenirs de la Tierra</a></li>
+                        <li><a href="#planes" class="hover:text-gold-400">Planes a Medida</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2">Experiencias Destacadas</h4>
+                    <ul class="space-y-2 text-xs text-emerald-300">
+                        <li><a href="#catalogo" class="hover:text-gold-400">Camino Lebaniego (3 días)</a></li>
+                        <li><a href="#catalogo" class="hover:text-gold-400">Ruta de los Vinos Cántabros</a></li>
+                        <li><a href="#catalogo" class="hover:text-gold-400">Gourmet del Mar - Anchoas</a></li>
+                        <li><a href="#catalogo" class="hover:text-gold-400">Picos de Europa & Teleférico</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-serif font-bold text-white text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2">Síguenos</h4>
+                    <p class="text-xs text-emerald-300/80 mb-4">¡Cada ruta, una nueva historia! Síguenos en nuestras redes sociales:</p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-9 h-9 bg-emerald-900 rounded-full flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-emerald-950 transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="fa-brands fa-facebook w-9 h-9 bg-emerald-900 rounded-full flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-emerald-950 transition"></a>
+                        <a href="#" class="fa-brands fa-tiktok w-9 h-9 bg-emerald-900 rounded-full flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-emerald-950 transition"></a>
+                        <a href="#" class="fa-brands fa-youtube w-9 h-9 bg-emerald-900 rounded-full flex items-center justify-center text-gold-400 hover:bg-gold-500 hover:text-emerald-950 transition"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-emerald-900 pt-6 text-center text-xs text-emerald-400/60 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>&copy; 2026 La Perla del Norte S.L. Todos los derechos reservados.</p>
+                <p>Tu próxima experiencia empieza aquí ♡</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/34688112233?text=Hola,%20quisiera%20información%20sobre%20las%20experiencias%20de%20La%20Perla%20del%20Norte" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition duration-300 border-2 border-white">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- DETAIL MODAL / POP-UP INTERACTIVO -->
+    <div id="item-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl transform transition-all relative border border-gold-500/30">
+            <!-- Modal Header / Image Banner -->
+            <div class="relative h-56 sm:h-64 bg-emerald-950">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover opacity-80">
+                <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="absolute bottom-4 left-4 right-4 text-white">
+                    <span id="modal-cat-badge" class="bg-gold-500 text-emerald-950 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider"></span>
+                    <h3 id="modal-title" class="text-2xl font-serif font-bold text-white mt-1 leading-tight"></h3>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Info badges -->
+                <div class="flex flex-wrap gap-4 text-xs font-semibold text-gray-600 mb-4 pb-4 border-b border-gray-100" id="modal-meta-container">
+                    <span id="modal-loc" class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-gold-600"></i> <span></span></span>
+                    <span id="modal-dur" class="flex items-center gap-1.5"><i class="fa-solid fa-clock text-gold-600"></i> <span></span></span>
+                    <span id="modal-diff" class="flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-gold-600"></i> <span></span></span>
+                </div>
+
+                <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed mb-6"></p>
+
+                <!-- Footer area with price & action -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-100">
+                    <div>
+                        <span class="text-xs text-gray-400 uppercase font-semibold block">Precio por persona</span>
+                        <span id="modal-price" class="text-3xl font-serif font-bold text-emerald-950"></span>
+                    </div>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <a id="modal-wa-btn" href="#" target="_blank" class="flex-1 sm:flex-none px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-center text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp"></i> Reservar
+                        </a>
+                        <button onclick="closeModalAndScrollContact()" class="flex-1 sm:flex-none px-5 py-3 bg-emerald-900 hover:bg-emerald-950 text-gold-400 font-bold rounded-xl text-center text-sm transition">
+                            Formulario
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-</section>
+    <!-- JAVASCRIPT LOGIC & DATA -->
+    <script>
+        // DATA BASE DEL CATÁLOGO DE LA PERLA DEL NORTE (Exactamente según la imagen)
+        const catalogData = [
+            // 01. SABORES DEL NORTE
+            {
+                id: "01",
+                category: "sabores",
+                categoryName: "Gastronomía y Experiencias Lácteas",
+                title: "01. Sobaos y Queserías de Cantabria",
+                location: "Joselín · Santander",
+                duration: "1 día (6-7 h)",
+                price: 150,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1559598467-f8b76c8155d0?auto=format&fit=crop&w=800&q=80",
+                description: "Sumérgete en la tradición cántabra visitando la famosa casa de Sobaos Joselín y queserías artesanales con cata guiada de sobaos recién horneados y quesos con denominación de origen."
+            },
+            {
+                id: "02",
+                category: "sabores",
+                categoryName: "Gastronomía y Experiencias Lácteas",
+                title: "02. Queserías de los Valles Pasiegos",
+                location: "Valles Pasiegos",
+                duration: "1 día (6-7 h)",
+                price: 150,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=800&q=80",
+                description: "Recorrido privado por los verdes Valles Pasiegos. Visita a pequeñas queserías de autor donde aprenderás el proceso de maduración de queso de nata y quesucos de Liébana."
+            },
+            {
+                id: "03",
+                category: "sabores",
+                categoryName: "Gastronomía y Experiencias Lácteas",
+                title: "03. Granjas de Cantabria",
+                location: "Huertas locales",
+                duration: "1 día (6-7 h)",
+                price: 100,
+                difficulty: "Muy Baja",
+                image: "https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=800&q=80",
+                description: "Una jornada ecológica interactiva en huertas y granjas sostenibles de Cantabria. Degustación de productos recolectados en el día y taller de elaboración artesanal."
+            },
+            {
+                id: "04",
+                category: "sabores",
+                categoryName: "Gastronomía y Experiencias Lácteas",
+                title: "04. La Ruta de los Vinos Cántabros",
+                location: "Bodegas costeras",
+                duration: "1 día (6-8 h)",
+                price: 170,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80",
+                description: "Descubre los viñedos con brisa marina de Bodegas Miradorio y viñedos de la Costa de Cantabria. Incluye cata maridada de Vinos de la Tierra de Costa de Cantabria."
+            },
+            {
+                id: "05",
+                category: "sabores",
+                categoryName: "Gastronomía y Experiencias Lácteas",
+                title: "05. Gourmet del Mar: Arte de la Anchoa",
+                location: "Santoña, Cantabria",
+                duration: "5-7 horas",
+                price: 120,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80",
+                description: "Visita a la cuna de la sobada artesanal de la Anchoa del Cantábrico en Santoña. Taller práctico para sobar tu propia lata y degustación acompañada de vino blanco."
+            },
 
+            // 02. VISTAS DEL NORTE
+            {
+                id: "06",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "06. Camino Lebaniego (Ruta a pie)",
+                location: "San Vicente de la Barquera - Potes",
+                duration: "3 días (72 km)",
+                price: 450,
+                difficulty: "Media",
+                image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+                description: "El histórico itinerario de peregrinación hasta el Monasterio de Santo Toribio de Liébana. Cruzarás valles, bosques de haya y vistas espectaculares de Picos de Europa."
+            },
+            {
+                id: "07",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "07. Ruta del Cares",
+                location: "Poncebos - Caín",
+                duration: "4 horas (12 km)",
+                price: 140,
+                difficulty: "Media-Baja",
+                image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80",
+                description: "Conocida como la 'Garganta Divina', esta impresionante caminata excavada en las rocas a lo largo del río Cares es una de las rutas más sobrecogedoras de España."
+            },
+            {
+                id: "08",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "08. Lagos de Covadonga",
+                location: "Asturias",
+                duration: "6-8 horas",
+                price: 140,
+                difficulty: "Baja-Media",
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+                description: "Excursión a los idílicos lagos glaciares Enol y Ercina en el Parque Nacional Picos de Europa, con parada estratégica en el Santuario de Covadonga."
+            },
+            {
+                id: "09",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "09. Costa Quebrada (Senderismo)",
+                location: "Santander",
+                duration: "4 horas (10 km)",
+                price: 130,
+                difficulty: "Media",
+                image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+                description: "Caminata geológica sobre acantilados, urros costeros y playas salvajes como la Arnía y Covachos. Paisaje protegido de valor paleontológico mundial."
+            },
+            {
+                id: "10",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "10. Parque Natural de Oyambre",
+                location: "San Vicente de la Barquera",
+                duration: "3 horas (8 km)",
+                price: 120,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80",
+                description: "Paseo entre rías, marismas, dunas y praderías frente a las cumbres nevadas de Picos de Europa. Ideal para familias y fotografía de aves."
+            },
+            {
+                id: "11",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "11. Picos de Europa (Teleférico)",
+                location: "Fuente Dé - Teleférico",
+                duration: "6 horas",
+                price: 180,
+                difficulty: "Media-Alta",
+                image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=800&q=80",
+                description: "Ascensión vertiginosa en el teleférico de Fuente Dé hasta el corazón del macizo central. Travesía en alta montaña rodeado de picos rocosos supremos."
+            },
+            {
+                id: "12",
+                category: "vistas",
+                categoryName: "Rutas, Naturaleza y Senderismo",
+                title: "12. Cudillero y Ribadesella",
+                location: "Costa asturiana",
+                duration: "1 día",
+                price: 140,
+                difficulty: "Baja",
+                image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+                description: "Ruta panorámica bordeando la costa hacia las coloridas casas colgadas del puerto marinero de Cudillero y la distinguida villa señorial de Ribadesella."
+            },
 
-<!-- =====================================================
-     CTA
-===================================================== -->
+            // 03. SOUVENIRS DE LA TIERRA
+            {
+                id: "13",
+                category: "souvenirs",
+                categoryName: "Lotes, Artesanía y Productos Locales",
+                title: "13. Lote Gourmet Cántabro",
+                location: "Quesos, sobaos, anchoas y productos",
+                duration: "Entrega Inmediata",
+                price: 35,
+                difficulty: "Gourmet",
+                image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80",
+                description: "Selección premium que incluye: 1 caja de sobaos pasiegos artesanos, 1 lata de Anchoas del Cantábrico y 1 cuña de queso curado cántabro."
+            },
+            {
+                id: "14",
+                category: "souvenirs",
+                categoryName: "Lotes, Artesanía y Productos Locales",
+                title: "14. Tazas Decorativas",
+                location: "Diseños exclusivos de Cantabria",
+                duration: "Artesanal",
+                price: 12,
+                difficulty: "Cerámica",
+                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80",
+                description: "Taza de cerámica artesanal ilustrada a mano con las balleneras de San Vicente y paisajes representativos del norte."
+            },
+            {
+                id: "15",
+                category: "souvenirs",
+                categoryName: "Lotes, Artesanía y Productos Locales",
+                title: "15. Platos Decorativos",
+                location: "Recuerdos únicos de la tierra",
+                duration: "Colección",
+                price: 18,
+                difficulty: "Cerámica",
+                image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80",
+                description: "Plato cerámico esmaltado con grabados tradicionales del escudo marítimo cántabro y motivos florales rurales."
+            },
+            {
+                id: "16",
+                category: "souvenirs",
+                categoryName: "Lotes, Artesanía y Productos Locales",
+                title: "16. Imanes Artesanales",
+                location: "Diferentes diseños de paisajes cántabros",
+                duration: "Lote de 3 u.",
+                price: 8,
+                difficulty: "Artesanal",
+                image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80",
+                description: "Set de 3 imanes hechos en madera tallada y resina con la albarca pasiega, el faro de Cabo Mayor y la concha perla."
+            },
+            {
+                id: "17",
+                category: "souvenirs",
+                categoryName: "Lotes, Artesanía y Productos Locales",
+                title: "17. Llaveros y Recuerdos",
+                location: "Artesanía local",
+                duration: "Hecho a mano",
+                price: 8,
+                difficulty: "Cuero/Cobre",
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80",
+                description: "Llavero confeccionado en cuero natural con la concha marina grabada en relieve y remates en latón antiguo."
+            }
+        ];
 
-<section class="section cta" id="contacto">
+        let currentCategory = 'all';
 
-    <div class="cta-inner">
+        // INITIALIZE PAGE
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCatalog(catalogData);
 
-        <div class="section-kicker">
-            Tu próximo viaje comienza aquí
-        </div>
+            // Mobile menu toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
 
-        <h2>
-            Cuéntanos qué imaginas.
-        </h2>
+        // RENDER CATALOG GRID
+        function renderCatalog(items) {
+            const grid = document.getElementById('catalog-grid');
+            const emptyState = document.getElementById('empty-state');
+            grid.innerHTML = '';
 
-        <p>
-            Nosotros nos encargamos de convertirlo
-            en una experiencia para recordar.
-        </p>
+            if (items.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
 
-        <a href="mailto:reservas@laperladecantabria.es"
-           class="btn btn-primary">
-            Planifica tu viaje
-        </a>
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
 
-    </div>
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 border border-gold-500/20 flex flex-col justify-between group hover:-translate-y-1 cursor-pointer";
+                card.onclick = () => openModal(item.id);
 
-</section>
+                // Badge color logic
+                let categoryBadgeBg = "bg-emerald-900 text-gold-400";
+                if(item.category === 'vistas') categoryBadgeBg = "bg-emerald-800 text-white";
+                if(item.category === 'souvenirs') categoryBadgeBg = "bg-gold-500 text-emerald-950 font-bold";
 
+                card.innerHTML = `
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-48 overflow-hidden bg-gray-100">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 text-[10px] uppercase font-bold px-3 py-1 rounded-full shadow-md ${categoryBadgeBg}">
+                                ${item.category === 'sabores' ? 'Gastronomía' : item.category === 'vistas' ? 'Ruta / Naturaleza' : 'Souvenir Gourmet'}
+                            </span>
+                            <span class="absolute bottom-3 right-3 bg-emerald-950/90 text-gold-400 font-serif font-bold text-lg px-3 py-1 rounded-xl border border-gold-500/40 shadow">
+                                ${item.price} €
+                            </span>
+                        </div>
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+                        <!-- Content -->
+                        <div class="p-5">
+                            <h3 class="font-serif font-bold text-lg text-emerald-950 mb-2 group-hover:text-gold-600 transition">
+                                ${item.title}
+                            </h3>
+                            <p class="text-xs text-gray-500 flex items-center gap-1 mb-3">
+                                <i class="fa-solid fa-location-dot text-gold-600"></i> ${item.location}
+                            </p>
+                            <p class="text-gray-600 text-xs line-clamp-2 mb-4 leading-relaxed">
+                                ${item.description}
+                            </p>
+                        </div>
+                    </div>
 
-<footer>
+                    <!-- Footer Metas -->
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between border-t border-gray-100 text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1">
+                            <i class="fa-solid fa-clock text-gold-600"></i> ${item.duration}
+                        </span>
+                        <span class="text-gold-600 font-bold flex items-center gap-1 group-hover:translate-x-1 transition">
+                            Ver detalles <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
-    <div class="footer-inner">
+        // FILTER CATALOG BY CATEGORY
+        function filterCatalog(category) {
+            currentCategory = category;
 
-        <div class="footer-brand">
+            // Update tab styles
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-gray-100 text-gray-700 hover:bg-emerald-900/10";
+            });
 
-            <h3>La Perla del Norte</h3>
+            const activeBtn = document.getElementById(`btn-${category}`);
+            if (activeBtn) {
+                activeBtn.className = "cat-btn px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 bg-emerald-900 text-gold-400 shadow-md font-bold";
+            }
 
-            <p>
-                Viajes, cultura, gastronomía y experiencias
-                auténticas por el norte de España.
-            </p>
+            // Category Banner text
+            const infoTitle = document.getElementById('cat-info-title');
+            const infoDesc = document.getElementById('cat-info-desc');
+            const infoBadge = document.getElementById('cat-count-badge');
 
-        </div>
+            let filtered = catalogData;
 
+            if (category === 'sabores') {
+                filtered = catalogData.filter(i => i.category === 'sabores');
+                infoTitle.innerText = "01. Sabores del Norte · Gastronomía y Experiencias Lácteas";
+                infoDesc.innerText = "Visitas a queserías de los Valles Pasiegos, sobaos artesanos y catas de vinos cántabros.";
+            } else if (category === 'vistas') {
+                filtered = catalogData.filter(i => i.category === 'vistas');
+                infoTitle.innerText = "02. Vistas del Norte · Rutas, Naturaleza y Senderismo";
+                infoDesc.innerText = "Senderismo guiado por Picos de Europa, Costa Quebrada y el histórico Camino Lebaniego.";
+            } else if (category === 'souvenirs') {
+                filtered = catalogData.filter(i => i.category === 'souvenirs');
+                infoTitle.innerText = "03. Souvenirs de la Tierra · Lotes y Artesanía Local";
+                infoDesc.innerText = "Lotes de productos locales cántabros, artesanía en madera y cerámica exclusiva.";
+            } else {
+                infoTitle.innerText = "Mostrando Todo el Catálogo de Experiencias";
+                infoDesc.innerText = "Explora las 17 opciones exclusivas preparadas por La Perla del Norte.";
+            }
 
-        <div>
+            infoBadge.innerText = `${filtered.length} ítems`;
 
-            <h4>Explora</h4>
+            // Clear search input if present
+            document.getElementById('catalog-search').value = '';
+            renderCatalog(filtered);
+        }
 
-            <ul>
-                <li><a href="#experiencias">Experiencias</a></li>
-                <li><a href="#destinos">Destinos</a></li>
-                <li><a href="#sabores">Sabores</a></li>
-                <li><a href="#opiniones">Opiniones</a></li>
-            </ul>
+        // SEARCH CATALOG
+        function searchCatalog() {
+            const query = document.getElementById('catalog-search').value.toLowerCase();
+            let baseList = currentCategory === 'all' 
+                ? catalogData 
+                : catalogData.filter(i => i.category === currentCategory);
 
-        </div>
+            const filtered = baseList.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.description.toLowerCase().includes(query) ||
+                item.location.toLowerCase().includes(query)
+            );
 
+            renderCatalog(filtered);
+        }
 
-        <div>
+        // HERO FILTER TRIGGER
+        function applyHeroFilter() {
+            const searchVal = document.getElementById('hero-search-input').value;
+            const catVal = document.getElementById('hero-category-select').value;
 
-            <h4>Contacto</h4>
+            filterCatalog(catVal);
 
-            <ul>
-                <li>+34 942 55 66 77</li>
-                <li>+34 688 11 22 33</li>
-                <li>Idelnorte@gmail.com</li>
-                <li>reservas@laperladecantabria.es</li>
-            </ul>
+            if(searchVal) {
+                document.getElementById('catalog-search').value = searchVal;
+                searchCatalog();
+            }
 
-        </div>
+            document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+        }
 
+        function resetFilters() {
+            document.getElementById('catalog-search').value = '';
+            filterCatalog('all');
+        }
 
-        <div>
+        // MODAL INTERACTION
+        function openModal(itemId) {
+            const item = catalogData.find(i => i.id === itemId);
+            if (!item) return;
 
-            <h4>La Perla</h4>
+            document.getElementById('modal-img').src = item.image;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-cat-badge').innerText = item.categoryName;
+            document.getElementById('modal-desc').innerText = item.description;
+            document.getElementById('modal-loc').querySelector('span').innerText = item.location;
+            document.getElementById('modal-dur').querySelector('span').innerText = item.duration;
+            document.getElementById('modal-diff').querySelector('span').innerText = item.difficulty;
+            document.getElementById('modal-price').innerText = `${item.price} €`;
 
-            <ul>
-                <li>Viajar con esencia</li>
-                <li>Cantabria · España</li>
-                <li>Proyecto académico</li>
-            </ul>
+            // WhatsApp custom text link
+            const waMsg = encodeURIComponent(`Hola La Perla del Norte, quisiera solicitar reserva para la experiencia: "${item.title}" (${item.price}€).`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/34688112233?text=${waMsg}`;
 
-        </div>
+            // Show Modal
+            document.getElementById('item-modal').classList.remove('hidden');
+        }
 
-    </div>
+        function closeModal() {
+            document.getElementById('item-modal').classList.add('hidden');
+        }
 
+        function closeModalAndScrollContact() {
+            closeModal();
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
 
-    <div class="footer-bottom">
-        © 2026 La Perla del Norte · Proyecto académico / ficticio
-    </div>
+        // FAQ ACCORDION LOGIC
+        function toggleFaq(num) {
+            const ans = document.getElementById(`faq-ans-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
 
-</footer>
-
-
-<!-- =====================================================
-     WHATSAPP
-===================================================== -->
-
-<a class="whatsapp"
-   href="https://wa.me/34688112233?text=Hola%2C%20me%20gustaría%20planificar%20un%20viaje%20con%20La%20Perla%20del%20Norte."
-   target="_blank">
-    💬 ¿Hablamos de tu viaje?
-</a>
-
-
+        // FORM SUBMIT HANDLER
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert("¡Gracias por tu mensaje! Tu solicitud ha sido enviada correctamente. Nos pondremos en contacto contigo en breve.");
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
