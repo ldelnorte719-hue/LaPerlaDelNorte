@@ -96,7 +96,6 @@
             100% { transform: translate3d(0%, 0, 0); }
         }
 
-        /* Puffs de neblina vaporosa difuminada */
         .mist-puff {
             background: radial-gradient(
                 ellipse at center,
@@ -273,7 +272,7 @@
     <section id="inicio" class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-moss-900">
         <!-- Imagen de fondo: Costa Quebrada-2.jpg -->
         <div class="absolute inset-0 z-0">
-            <img src="Costa Quebrada-2.jpg" 
+            <img src="Costa%20Quebrada-2.jpg" 
                  onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'"
                  alt="Costa Quebrada, Cantabria" 
                  class="w-full h-full object-cover object-center scale-105 filter brightness-[0.55] contrast-[1.05] saturate-[0.92]">
@@ -395,7 +394,7 @@
                 
                 <!-- Foto Flotante Superior Izquierda: picos de europa.jpg -->
                 <div class="hidden sm:block absolute left-2 md:left-8 top-0 w-36 md:w-44 h-44 md:h-52 rounded-sm overflow-hidden editorial-card border border-cream-100/15 z-10">
-                    <img src="picos de europa.jpg" 
+                    <img src="picos%20de%20europa.jpg" 
                          onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=85'"
                          alt="Picos de Europa" class="w-full h-full object-cover">
                 </div>
@@ -457,7 +456,7 @@
                     <span class="bracket-label block mt-3 mb-6">( calma y autenticidad )</span>
 
                     <div class="w-48 h-52 rounded-sm overflow-hidden editorial-card border border-cream-100/10">
-                        <img src="Camino Lebaniego.jpg" 
+                        <img src="Camino%20Lebaniego.jpg" 
                              onerror="this.src='https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=600&q=85'"
                              alt="Camino Lebaniego · Camaleño" class="w-full h-full object-cover">
                     </div>
@@ -466,7 +465,7 @@
                 <!-- Columna Derecha: lago covadonga.jpg + Párrafo + sobaos.jpg -->
                 <div class="md:col-span-7 flex flex-col items-start md:pl-6">
                     <div class="w-full h-56 sm:h-64 rounded-sm overflow-hidden editorial-card border border-cream-100/10 mb-8">
-                        <img src="lago covadonga.jpg" 
+                        <img src="lago%20covadonga.jpg" 
                              onerror="this.src='https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85'"
                              alt="Lagos de Covadonga y Picos de Europa" class="w-full h-full object-cover">
                     </div>
@@ -544,7 +543,7 @@
                 </svg>
             </div>
 
-            <!-- Capa 1: Neblina alta etérea (deriva lenta hacia la izquierda) -->
+            <!-- Capa 1: Neblina alta etérea -->
             <div class="mist-cloud-layer absolute inset-x-0 bottom-10 h-52 opacity-75">
                 <div class="mist-track mist-drift-left-slow h-full">
                     <div class="w-1/2 h-full relative flex-shrink-0">
@@ -562,7 +561,7 @@
                 </div>
             </div>
 
-            <!-- Capa 2: Nubes vaporosas medias (deriva suave hacia la derecha) -->
+            <!-- Capa 2: Nubes vaporosas medias -->
             <div class="mist-cloud-layer absolute inset-x-0 bottom-2 h-52 opacity-90">
                 <div class="mist-track mist-drift-right-slow h-full">
                     <div class="w-1/2 h-full relative flex-shrink-0">
@@ -582,7 +581,7 @@
                 </div>
             </div>
 
-            <!-- Capa 3: Manto de neblina densa en primer plano fundiéndose con la sección crema -->
+            <!-- Capa 3: Manto de neblina densa en primer plano -->
             <div class="mist-cloud-layer absolute inset-x-0 -bottom-6 h-44 opacity-95">
                 <div class="mist-track mist-drift-left-gentle h-full">
                     <div class="w-1/2 h-full relative flex-shrink-0">
@@ -710,16 +709,16 @@
             <!-- Pestañas de Filtro Minimalistas -->
             <div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-moss-900/10">
                 <div class="flex flex-wrap gap-2" id="category-tabs">
-                    <button onclick="filterCatalog('all')" id="btn-all" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-moss-900 text-cream-50">
+                    <button type="button" onclick="filterCatalog('all')" id="btn-all" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-moss-900 text-cream-50">
                         Todas (17)
                     </button>
-                    <button onclick="filterCatalog('sabores')" id="btn-sabores" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
+                    <button type="button" onclick="filterCatalog('sabores')" id="btn-sabores" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
                         01 · Sabores del Norte (5)
                     </button>
-                    <button onclick="filterCatalog('vistas')" id="btn-vistas" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
+                    <button type="button" onclick="filterCatalog('vistas')" id="btn-vistas" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
                         02 · Vistas y Rutas (7)
                     </button>
-                    <button onclick="filterCatalog('souvenirs')" id="btn-souvenirs" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
+                    <button type="button" onclick="filterCatalog('souvenirs')" id="btn-souvenirs" class="cat-btn px-5 py-2 rounded-full text-xs font-medium transition-all duration-300 bg-white text-moss-900/75 hover:bg-moss-900/10 border border-moss-900/10">
                         03 · Souvenirs de la Tierra (5)
                     </button>
                 </div>
@@ -735,7 +734,7 @@
             <div id="empty-state" class="hidden text-center py-16 bg-white rounded-xl border border-moss-900/10">
                 <p class="font-script italic text-3xl text-moss-900 mb-2">No encontramos coincidencias</p>
                 <p class="text-xs text-moss-900/60 mb-5">Prueba con otra palabra clave o vuelve a mostrar todas las opciones.</p>
-                <button onclick="resetFilters()" class="bg-moss-900 text-cream-50 text-xs px-5 py-2.5 rounded-full">Ver todo el catálogo</button>
+                <button type="button" onclick="resetFilters()" class="bg-moss-900 text-cream-50 text-xs px-5 py-2.5 rounded-full">Ver todo el catálogo</button>
             </div>
         </div>
     </section>
@@ -834,7 +833,7 @@
 
                 <div class="space-y-3">
                     <div class="bg-white rounded-lg border border-moss-900/10 overflow-hidden">
-                        <button class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(1)">
+                        <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(1)">
                             <span>¿Cómo reservo una experiencia del catálogo?</span>
                             <i id="faq-icon-1" class="fa-solid fa-plus text-xs text-terracotta-600 transition-transform"></i>
                         </button>
@@ -844,7 +843,7 @@
                     </div>
 
                     <div class="bg-white rounded-lg border border-moss-900/10 overflow-hidden">
-                        <button class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(2)">
+                        <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(2)">
                             <span>¿Qué incluyen las rutas de Vistas del Norte?</span>
                             <i id="faq-icon-2" class="fa-solid fa-plus text-xs text-terracotta-600 transition-transform"></i>
                         </button>
@@ -854,7 +853,7 @@
                     </div>
 
                     <div class="bg-white rounded-lg border border-moss-900/10 overflow-hidden">
-                        <button class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(3)">
+                        <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(3)">
                             <span>¿Enviáis los Souvenirs de la Tierra a domicilio?</span>
                             <i id="faq-icon-3" class="fa-solid fa-plus text-xs text-terracotta-600 transition-transform"></i>
                         </button>
@@ -864,7 +863,7 @@
                     </div>
 
                     <div class="bg-white rounded-lg border border-moss-900/10 overflow-hidden">
-                        <button class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(4)">
+                        <button type="button" class="w-full p-4 text-left text-xs sm:text-sm font-medium flex justify-between items-center" onclick="toggleFaq(4)">
                             <span>¿Podemos combinar varias experiencias en un fin de semana?</span>
                             <i id="faq-icon-4" class="fa-solid fa-plus text-xs text-terracotta-600 transition-transform"></i>
                         </button>
@@ -963,7 +962,7 @@
     ========================================================= -->
     <div id="detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-moss-950/80 backdrop-blur-sm p-4">
         <div class="bg-cream-50 text-moss-950 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl border border-moss-900/15 relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-moss-950/70 text-cream-50 hover:bg-terracotta-600 flex items-center justify-center transition">
+            <button type="button" onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-moss-950/70 text-cream-50 hover:bg-terracotta-600 flex items-center justify-center transition">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
 
@@ -991,7 +990,7 @@
                         <span id="modal-price" class="text-2xl font-serif font-bold text-moss-950"></span>
                     </div>
                     <div class="flex gap-2">
-                        <button id="modal-form-btn" class="px-4 py-2.5 border border-moss-900/25 hover:bg-moss-900 hover:text-cream-50 text-xs font-medium rounded-full transition">
+                        <button type="button" id="modal-form-btn" class="px-4 py-2.5 border border-moss-900/25 hover:bg-moss-900 hover:text-cream-50 text-xs font-medium rounded-full transition">
                             Solicitar por web
                         </button>
                         <a id="modal-wa-link" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-terracotta-600 hover:bg-terracotta-500 text-cream-50 text-xs font-semibold rounded-full transition flex items-center gap-1.5">
@@ -1021,4 +1020,482 @@
                 price: "150 €",
                 img: "sobaos.jpg",
                 fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
-                desc: "Visita guiada a obradores tradicionales pasiegos para conocer la elaboración artesanal del sobao y la quesada, seguida de una degust
+                desc: "Visita guiada a obradores tradicionales pasiegos para conocer la elaboración artesanal del sobao y la quesada, seguida de una degustación maridada en quesería local."
+            },
+            {
+                id: 2,
+                num: "02",
+                category: "sabores",
+                categoryLabel: "Sabores del Norte",
+                title: "Queserías de los Valles Pasiegos",
+                location: "Valles Pasiegos, Cantabria",
+                duration: "1 día (6-7 h)",
+                difficulty: "Todos los públicos",
+                price: "150 €",
+                img: "quesos.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85",
+                desc: "Ruta por las cabañas y praderas verdes de los Valles Pasiegos con cata comentada de quesos autóctonos de nata, madurados y de pasta blanda en bodega de afinado."
+            },
+            {
+                id: 3,
+                num: "03",
+                category: "sabores",
+                categoryLabel: "Sabores del Norte",
+                title: "Granjas y Huertas de Cantabria",
+                location: "Huertas locales · Cantabria",
+                duration: "1 día (6-7 h)",
+                difficulty: "Familiar",
+                price: "100 €",
+                img: "quesos3.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+                desc: "Experiencia rural sostenible en contacto directo con productores de la tierra, tabla artesanal de quesos y embutidos locales con almuerzo campesino de kilómetro cero."
+            },
+            {
+                id: 4,
+                num: "04",
+                category: "sabores",
+                categoryLabel: "Sabores del Norte",
+                title: "La Ruta de los Vinos Cántabros",
+                location: "Bodegas costeras · Cantabria",
+                duration: "1 día (6-8 h)",
+                difficulty: "Todos los públicos",
+                price: "170 €",
+                img: "vinos.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=85",
+                desc: "Recorrido por bodegas y viñedos atlánticos con vistas al Cantábrico, cata comentada de vinos blancos y tintos acompañada de quesos, embutidos y anchoas."
+            },
+            {
+                id: 5,
+                num: "05",
+                category: "sabores",
+                categoryLabel: "Sabores del Norte",
+                title: "Gourmet del Mar: Arte de la Anchoa",
+                location: "Santoña, Cantabria",
+                duration: "5-7 horas",
+                difficulty: "Todos los públicos",
+                price: "120 €",
+                img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+                fallbackImg: "vinos.jpg",
+                desc: "Descubre el sobado a mano de la anchoa del Cantábrico en una conservera artesanal de Santoña y disfruta de una cata frente a la bahía."
+            },
+
+            // 02 · VISTAS DEL NORTE (7 opciones)
+            {
+                id: 6,
+                num: "06",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Camino Lebaniego (Ruta a pie)",
+                location: "San Vicente de la Barquera - Camaleño / Potes",
+                duration: "3 días (72 km)",
+                difficulty: "Dificultad media",
+                price: "450 €",
+                img: "Camino Lebaniego.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85",
+                desc: "Travesía histórica desde la costa hasta Camaleño y el Monasterio de Santo Toribio de Liébana atravesando desfiladeros, bosques centenarios y aldeas al pie de los Picos."
+            },
+            {
+                id: 7,
+                num: "07",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Ruta del Cares",
+                location: "Poncebos - Caín",
+                duration: "4 horas (12 km)",
+                difficulty: "Dificultad media-baja",
+                price: "140 €",
+                img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
+                fallbackImg: "picos de europa.jpg",
+                desc: "La emblemática Garganta Divina tallada en la roca en pleno corazón de los Picos de Europa con guía de montaña."
+            },
+            {
+                id: 8,
+                num: "08",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Lagos de Covadonga",
+                location: "Asturias · Picos de Europa",
+                duration: "6-8 horas",
+                difficulty: "Dificultad baja-media",
+                price: "140 €",
+                img: "lago covadonga.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+                desc: "Excursión panorámica por los lagos glaciares Enol y Ercina rodeados de praderas alpinas y cumbres calizas."
+            },
+            {
+                id: 9,
+                num: "09",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Costa Quebrada (Senderismo)",
+                location: "Liencres · Santander",
+                duration: "4 horas (10 km)",
+                difficulty: "Dificultad media",
+                price: "130 €",
+                img: "Costa Quebrada.jpg",
+                fallbackImg: "Costa Quebrada-2.jpg",
+                desc: "Ruta geológica por la isla de Castro, tómbolos de arena dorada, acantilados esculpidos por el oleaje y playas salvajes del Cantábrico."
+            },
+            {
+                id: 10,
+                num: "10",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Parque Natural de Oyambre",
+                location: "San Vicente de la Barquera",
+                duration: "3 horas (8 km)",
+                difficulty: "Dificultad baja",
+                price: "120 €",
+                img: "Oyambre.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
+                desc: "Paseo interpretativo entre marismas, rías turquesas, dunas y praderas verdes con vistas privilegiadas a los Picos de Europa."
+            },
+            {
+                id: 11,
+                num: "11",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Picos de Europa · Teleférico",
+                location: "Fuente Dé, Liébana",
+                duration: "6 horas",
+                difficulty: "Dificultad media-alta",
+                price: "180 €",
+                img: "picos de europa.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
+                desc: "Ascenso en el teleférico de Fuente Dé hasta El Cable (1.823 m) y ruta de alta montaña frente a las cumbres nevadas del Macizo Central."
+            },
+            {
+                id: 12,
+                num: "12",
+                category: "vistas",
+                categoryLabel: "Vistas del Norte",
+                title: "Cudillero y Ribadesella",
+                location: "Costa asturiana",
+                duration: "1 día",
+                difficulty: "Dificultad baja",
+                price: "140 €",
+                img: "Costa Quebrada-2.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=85",
+                desc: "Jornada cultural por los miradores costeros del Cantábrico, calas de aguas cristalinas y pueblos marineros con encanto."
+            },
+
+            // 03 · SOUVENIRS DE LA TIERRA (5 opciones)
+            {
+                id: 13,
+                num: "13",
+                category: "souvenirs",
+                categoryLabel: "Souvenirs de la Tierra",
+                title: "Lote Gourmet Cántabro",
+                location: "Envío a domicilio / Recogida",
+                duration: "Entrega 24-48h",
+                difficulty: "Selección Artesanal",
+                price: "35 €",
+                img: "quesos3.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85",
+                desc: "Caja presentación con quesos artesanos madurados, sobaos pasiegos con mantequilla, anchoas de Santoña y productos locales seleccionados."
+            },
+            {
+                id: 14,
+                num: "14",
+                category: "souvenirs",
+                categoryLabel: "Souvenirs de la Tierra",
+                title: "Tazas Decorativas del Norte",
+                location: "Diseño exclusivo La Perla",
+                duration: "Edición limitada",
+                difficulty: "Cerámica",
+                price: "12 €",
+                img: "sobaos.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
+                desc: "Taza de cerámica ilustrada con motivos marineros y paisajes emblemáticos de Cantabria."
+            },
+            {
+                id: 15,
+                num: "15",
+                category: "souvenirs",
+                categoryLabel: "Souvenirs de la Tierra",
+                title: "Platos Decorativos Artesanales",
+                location: "Alfarería local · Cantabria",
+                duration: "Pieza única",
+                difficulty: "Artesanía",
+                price: "18 €",
+                img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85",
+                fallbackImg: "quesos.jpg",
+                desc: "Platos pintados a mano inspirados en la cerámica tradicional cántabra y el mar Cantábrico."
+            },
+            {
+                id: 16,
+                num: "16",
+                category: "souvenirs",
+                categoryLabel: "Souvenirs de la Tierra",
+                title: "Imanes Artesanales de Paisajes",
+                location: "Hecho en Cantabria",
+                duration: "Colección completa",
+                difficulty: "Recuerdo",
+                price: "8 €",
+                img: "Costa Quebrada.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85",
+                desc: "Diferentes diseños ilustrados de Costa Quebrada, faros y montañas de Cantabria acabados a mano."
+            },
+            {
+                id: 17,
+                num: "17",
+                category: "souvenirs",
+                categoryLabel: "Souvenirs de la Tierra",
+                title: "Llaveros y Recuerdos en Madera",
+                location: "Artesanía local · Cantabria",
+                duration: "Grabado artesanal",
+                difficulty: "Recuerdo",
+                price: "8 €",
+                img: "Camino Lebaniego.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=85",
+                desc: "Llaveros grabados en madera natural con símbolos del Camino Lebaniego y la concha de La Perla del Norte."
+            }
+        ];
+
+        const mapLocations = [
+            {
+                tag: "02 · Vistas y Rutas",
+                title: "Costa Quebrada — Acantilados e Isla de Castro",
+                desc: "Formaciones geológicas únicas frente al mar Cantábrico, tómbolos de arena y puestas de sol inolvidables.",
+                cat: "vistas"
+            },
+            {
+                tag: "01 · Sabores del Norte",
+                title: "Santoña & Bodegas Costeras — Vinos y Anchoas",
+                desc: "Talleres conserveros tradicionales y cata de vinos atlánticos frente a la bahía.",
+                cat: "sabores"
+            },
+            {
+                tag: "01 · Sabores del Norte",
+                title: "Valles Pasiegos — Sobaos, Quesadas y Praderas",
+                desc: "Obradores históricos y queserías artesanales rodeadas de cabañas de piedra y montañas verdes.",
+                cat: "sabores"
+            },
+            {
+                tag: "02 · Vistas y Rutas",
+                title: "Parque Natural de Oyambre & San Vicente",
+                desc: "Rías turquesas, marismas y playas infinitas con las cumbres nevadas de los Picos de Europa en el horizonte.",
+                cat: "vistas"
+            },
+            {
+                tag: "02 · Vistas y Rutas",
+                title: "Picos de Europa — Fuente Dé y Camino Lebaniego",
+                desc: "Alta montaña accesible en teleférico, gargantas esculpidas en roca y aldeas lebaniegas como Camaleño.",
+                cat: "vistas"
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        function resolveImgUrl(path) {
+            if (!path) return '';
+            if (path.startsWith('http://') || path.startsWith('https://')) return path;
+            return encodeURI(path);
+        }
+
+        function selectMapPoint(index) {
+            const point = mapLocations[index];
+            document.getElementById('map-point-tag').textContent = point.tag;
+            document.getElementById('map-point-title').textContent = point.title;
+            document.getElementById('map-point-desc').textContent = point.desc;
+            const btn = document.getElementById('map-point-btn');
+            btn.setAttribute('onclick', `filterCatalog('${point.cat}')`);
+        }
+
+        function renderCatalog() {
+            const grid = document.getElementById('catalog-grid');
+            const empty = document.getElementById('empty-state');
+            const badge = document.getElementById('cat-count-badge');
+
+            if (!grid) return;
+
+            const filtered = catalogData.filter(item => {
+                const matchesCat = currentCategory === 'all' || item.category === currentCategory;
+                const q = currentSearch.toLowerCase().trim();
+                const matchesSearch = !q ||
+                                      item.title.toLowerCase().includes(q) || 
+                                      item.location.toLowerCase().includes(q) || 
+                                      item.desc.toLowerCase().includes(q);
+                return matchesCat && matchesSearch;
+            });
+
+            badge.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'opción' : 'opciones'}`;
+            grid.innerHTML = '';
+
+            if (filtered.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            }
+
+            empty.classList.add('hidden');
+
+            filtered.forEach(item => {
+                const article = document.createElement('article');
+                article.className = 'group cursor-pointer flex flex-col';
+                article.addEventListener('click', () => openModal(item.id));
+
+                const mediaBox = document.createElement('div');
+                mediaBox.className = 'relative aspect-[4/3] rounded-lg overflow-hidden bg-moss-900 mb-4 shadow-sm';
+
+                const img = document.createElement('img');
+                img.src = resolveImgUrl(item.img);
+                img.alt = item.title;
+                img.className = 'w-full h-full object-cover group-hover:scale-105 transition duration-700';
+                img.onerror = function() {
+                    this.onerror = null;
+                    this.src = resolveImgUrl(item.fallbackImg);
+                };
+
+                const overlay = document.createElement('div');
+                overlay.className = 'absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent';
+
+                const topBadge = document.createElement('span');
+                topBadge.className = 'absolute top-3 left-3 bg-moss-950/75 backdrop-blur-sm text-cream-50 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full';
+                topBadge.textContent = `${item.num} · ${item.categoryLabel}`;
+
+                const bottomInfo = document.createElement('span');
+                bottomInfo.className = 'absolute bottom-3 left-3 text-cream-50 text-xs font-medium tracking-wide';
+                bottomInfo.textContent = `${item.price} · ${item.duration}`;
+
+                mediaBox.appendChild(img);
+                mediaBox.appendChild(overlay);
+                mediaBox.appendChild(topBadge);
+                mediaBox.appendChild(bottomInfo);
+
+                const titleRow = document.createElement('div');
+                titleRow.className = 'flex items-baseline justify-between gap-2';
+                const h3 = document.createElement('h3');
+                h3.className = 'font-serif text-lg text-moss-950 group-hover:text-terracotta-600 transition';
+                h3.textContent = item.title;
+                titleRow.appendChild(h3);
+
+                const p = document.createElement('p');
+                p.className = 'text-xs text-moss-900/65 line-clamp-2 mt-1 mb-3 leading-relaxed';
+                p.textContent = item.desc;
+
+                const actions = document.createElement('div');
+                actions.className = 'mt-auto flex items-center gap-4 text-xs';
+                actions.innerHTML = `
+                    <span class="font-semibold text-moss-950 underline underline-offset-4 group-hover:text-terracotta-600 transition">reservar</span>
+                    <span class="text-moss-900/45 group-hover:text-moss-900 transition">ver detalles →</span>
+                `;
+
+                article.appendChild(mediaBox);
+                article.appendChild(titleRow);
+                article.appendChild(p);
+                article.appendChild(actions);
+
+                grid.appendChild(article);
+            });
+        }
+
+        function filterCatalog(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-moss-900', 'text-cream-50');
+                btn.classList.add('bg-white', 'text-moss-900/75');
+            });
+            const activeBtn = document.getElementById(`btn-${cat}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-moss-900/75');
+                activeBtn.classList.add('bg-moss-900', 'text-cream-50');
+            }
+            renderCatalog();
+        }
+
+        function searchCatalog() {
+            currentSearch = document.getElementById('catalog-search').value;
+            renderCatalog();
+        }
+
+        function resetFilters() {
+            currentCategory = 'all';
+            currentSearch = '';
+            document.getElementById('catalog-search').value = '';
+            filterCatalog('all');
+        }
+
+        function openModal(id) {
+            const item = catalogData.find(i => i.id === id);
+            if (!item) return;
+
+            const modalImg = document.getElementById('modal-img');
+            modalImg.src = resolveImgUrl(item.img);
+            modalImg.onerror = function() {
+                this.onerror = null;
+                this.src = resolveImgUrl(item.fallbackImg);
+            };
+            modalImg.alt = item.title;
+
+            document.getElementById('modal-cat-badge').textContent = `${item.num} · ${item.categoryLabel}`;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-location').textContent = item.location;
+            document.getElementById('modal-duration').textContent = item.duration;
+            document.getElementById('modal-difficulty').textContent = item.difficulty;
+            document.getElementById('modal-desc').textContent = item.desc;
+            document.getElementById('modal-price').textContent = item.price;
+
+            const waText = encodeURIComponent(`Hola, me gustaría reservar o recibir información sobre: ${item.title} (${item.price}).`);
+            document.getElementById('modal-wa-link').href = `https://wa.me/34688112233?text=${waText}`;
+
+            document.getElementById('modal-form-btn').onclick = () => {
+                closeModal();
+                selectPlanInForm(item.title);
+                document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            const modal = document.getElementById('detail-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('detail-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function selectPlanInForm(value) {
+            const input = document.getElementById('form-interest');
+            if (input) input.value = value;
+        }
+
+        function toggleFaq(num) {
+            const ans = document.getElementById(`faq-ans-${num}`);
+            const icon = document.getElementById(`faq-icon-${num}`);
+            const isHidden = ans.classList.contains('hidden');
+            ans.classList.toggle('hidden');
+            icon.style.transform = isHidden ? 'rotate(45deg)' : 'rotate(0deg)';
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('form-success').classList.remove('hidden');
+            e.target.reset();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.toggle('hidden');
+                });
+            }
+
+            const detailModal = document.getElementById('detail-modal');
+            if (detailModal) {
+                detailModal.addEventListener('click', (e) => {
+                    if (e.target.id === 'detail-modal') closeModal();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            renderCatalog();
+        });
+    </script>
+</body>
+</html>
