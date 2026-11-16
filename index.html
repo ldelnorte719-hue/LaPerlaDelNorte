@@ -58,9 +58,9 @@
         }
 
         /* =========================================================
-           1. NUBES VECTORIALES SUAVES (PARALAJE CONTINUO SIN CORTES)
+           1. NUBES NUBOSAS / NEBLINA SUAVE EN MOVIMIENTO LENTO
         ========================================================= */
-        .cloud-marquee-wrapper {
+        .mist-cloud-layer {
             position: relative;
             width: 100%;
             overflow: hidden;
@@ -68,32 +68,56 @@
             user-select: none;
         }
 
-        .cloud-track {
+        .mist-track {
             display: flex;
             width: 200%;
             will-change: transform;
         }
 
-        .cloud-track-slow {
-            animation: cloudMarqueeLeft 95s linear infinite;
+        .mist-drift-left-slow {
+            animation: mistSlideLeft 95s linear infinite;
         }
 
-        .cloud-track-medium {
-            animation: cloudMarqueeRight 68s linear infinite;
+        .mist-drift-right-slow {
+            animation: mistSlideRight 115s linear infinite;
         }
 
-        .cloud-track-front {
-            animation: cloudMarqueeLeft 48s linear infinite;
+        .mist-drift-left-gentle {
+            animation: mistSlideLeft 75s linear infinite;
         }
 
-        @keyframes cloudMarqueeLeft {
+        @keyframes mistSlideLeft {
             0%   { transform: translate3d(0%, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        @keyframes cloudMarqueeRight {
+        @keyframes mistSlideRight {
             0%   { transform: translate3d(-50%, 0, 0); }
             100% { transform: translate3d(0%, 0, 0); }
+        }
+
+        /* Puffs de neblina vaporosa difuminada */
+        .mist-puff {
+            background: radial-gradient(
+                ellipse at center,
+                rgba(255, 255, 255, 0.92) 0%,
+                rgba(246, 243, 238, 0.72) 32%,
+                rgba(242, 239, 233, 0.34) 60%,
+                rgba(242, 239, 233, 0) 78%
+            );
+            filter: blur(22px);
+            border-radius: 9999px;
+        }
+
+        .mist-puff-soft {
+            background: radial-gradient(
+                ellipse at center,
+                rgba(255, 255, 255, 0.65) 0%,
+                rgba(242, 239, 233, 0.38) 45%,
+                rgba(242, 239, 233, 0) 76%
+            );
+            filter: blur(30px);
+            border-radius: 9999px;
         }
 
         /* =========================================================
@@ -104,7 +128,7 @@
             z-index: 26;
             pointer-events: none;
             will-change: transform;
-            animation: pelicanCruise 44s linear infinite;
+            animation: pelicanCruise 46s linear infinite;
         }
 
         .pelican-bob-body {
@@ -134,12 +158,11 @@
 
         @keyframes pelicanCruise {
             0%   { left: -240px; opacity: 0; }
-            6%   { opacity: 0.98; }
-            94%  { opacity: 0.98; }
+            6%   { opacity: 0.96; }
+            94%  { opacity: 0.96; }
             100% { left: calc(100% + 240px); opacity: 0; }
         }
 
-        /* Ciclo realista: 3 aleteos suaves seguidos de planeo pausado */
         @keyframes pelicanGlideCycle {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             7%       { transform: translateY(6px) rotate(3deg); }
@@ -245,36 +268,31 @@
 <body class="antialiased selection:bg-terracotta-600 selection:text-white">
 
     <!-- =========================================================
-         SECCIÓN 1: HERO ATMOSFÉRICO CON COLLAGE FLOTANTE + PELÍCANO + NUBES
+         SECCIÓN 1: HERO ATMOSFÉRICO CON FOTOS REALES + NEBLINA SUAVE + PELÍCANO
     ========================================================= -->
     <section id="inicio" class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-moss-900">
-        <!-- Imagen de fondo de tu GitHub (Costa de Cantabria) -->
+        <!-- Imagen de fondo: Costa Quebrada-2.jpg -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80" 
-                 alt="Costa del Cantábrico" 
-                 class="w-full h-full object-cover object-center scale-105 filter brightness-[0.58] contrast-[1.06] saturate-[0.95]">
-            <div class="absolute inset-0 bg-gradient-to-b from-moss-950/60 via-moss-900/35 to-moss-900"></div>
+            <img src="Costa Quebrada-2.jpg" 
+                 onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80'"
+                 alt="Costa Quebrada, Cantabria" 
+                 class="w-full h-full object-cover object-center scale-105 filter brightness-[0.55] contrast-[1.05] saturate-[0.92]">
+            <div class="absolute inset-0 bg-gradient-to-b from-moss-950/65 via-moss-900/40 to-moss-900"></div>
         </div>
 
-        <!-- Nubes vectoriales altas suaves cruzando el cielo del Hero -->
-        <div class="cloud-marquee-wrapper absolute top-14 left-0 right-0 z-[5] opacity-35">
-            <div class="cloud-track cloud-track-slow">
-                <svg class="w-1/2 h-32 flex-shrink-0" viewBox="0 0 1440 160" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="heroCloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
-                            <stop offset="100%" stop-color="#f2efe9" stop-opacity="0"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M80,120 C80,92 108,76 135,84 C148,54 192,46 218,70 C244,56 282,70 288,96 C312,96 328,110 326,126 L70,126 Z" fill="url(#heroCloudGrad)"/>
-                    <path d="M620,105 C620,76 652,60 682,68 C698,34 752,26 784,54 C815,38 862,54 870,84 C898,84 918,100 914,118 L605,118 Z" fill="url(#heroCloudGrad)"/>
-                    <path d="M1110,125 C1110,98 1138,84 1164,90 C1178,64 1220,56 1244,78 C1268,66 1304,78 1310,102 C1332,102 1346,114 1344,130 L1100,130 Z" fill="url(#heroCloudGrad)"/>
-                </svg>
-                <svg class="w-1/2 h-32 flex-shrink-0" viewBox="0 0 1440 160" preserveAspectRatio="none">
-                    <path d="M80,120 C80,92 108,76 135,84 C148,54 192,46 218,70 C244,56 282,70 288,96 C312,96 328,110 326,126 L70,126 Z" fill="url(#heroCloudGrad)"/>
-                    <path d="M620,105 C620,76 652,60 682,68 C698,34 752,26 784,54 C815,38 862,54 870,84 C898,84 918,100 914,118 L605,118 Z" fill="url(#heroCloudGrad)"/>
-                    <path d="M1110,125 C1110,98 1138,84 1164,90 C1178,64 1220,56 1244,78 C1268,66 1304,78 1310,102 C1332,102 1346,114 1344,130 L1100,130 Z" fill="url(#heroCloudGrad)"/>
-                </svg>
+        <!-- Neblina nubosa suave flotando en lo alto del Hero -->
+        <div class="mist-cloud-layer absolute top-10 left-0 right-0 h-44 z-[5] opacity-40">
+            <div class="mist-track mist-drift-left-slow h-full">
+                <div class="w-1/2 h-full relative flex-shrink-0">
+                    <div class="mist-puff-soft absolute top-2 left-[5%] w-[420px] h-28"></div>
+                    <div class="mist-puff-soft absolute top-6 left-[38%] w-[520px] h-32"></div>
+                    <div class="mist-puff-soft absolute top-0 left-[72%] w-[440px] h-28"></div>
+                </div>
+                <div class="w-1/2 h-full relative flex-shrink-0">
+                    <div class="mist-puff-soft absolute top-2 left-[5%] w-[420px] h-28"></div>
+                    <div class="mist-puff-soft absolute top-6 left-[38%] w-[520px] h-32"></div>
+                    <div class="mist-puff-soft absolute top-0 left-[72%] w-[440px] h-28"></div>
+                </div>
             </div>
         </div>
 
@@ -299,7 +317,6 @@
                     </linearGradient>
                 </defs>
                 <g class="pelican-bob-body">
-                    <!-- Ala trasera (izquierda/lejana) -->
                     <g class="pelican-wing-far-arm">
                         <path d="M88 47 C79 34, 72 26, 64 25 C73 34, 80 42, 85 49 Z" fill="#b8b3a6"/>
                         <g class="pelican-wing-far-tip">
@@ -307,25 +324,18 @@
                             <path d="M35 12 C28 11, 23 11, 20 12 C25 14, 30 15, 35 16 Z" fill="#2d302b"/>
                         </g>
                     </g>
-                    <!-- Cola y patas recogidas -->
                     <path d="M48 56 L22 51 L26 57 L20 60 L49 62 Z" fill="#a8a397"/>
                     <path d="M56 63 L36 67 L38 69 L58 65 Z" fill="#c47435"/>
-                    <!-- Cuerpo aerodinámico y cuello en S -->
                     <path d="M47 56 C62 47, 88 46, 110 50 C123 52, 129 45, 133 39 C136 34, 143 34, 148 39 C150 42, 148 47, 143 50 C134 55, 125 65, 102 67 C78 69, 58 64, 47 56 Z" fill="url(#pelBodyHero)"/>
-                    <!-- Sombra ventral -->
                     <path d="M52 59 C74 66, 102 66, 122 59 C104 63, 76 63, 52 59 Z" fill="#9e998c" opacity="0.55"/>
-                    <!-- Pico largo y bolsa gular característica -->
                     <path d="M147 40 L202 48 C195 50, 174 51, 147 45 Z" fill="#e9b454"/>
                     <path d="M147 45 C163 54, 184 54, 201 48 C186 58, 162 60, 144 49 Z" fill="url(#pelBeakHero)"/>
-                    <!-- Ojo y cresta -->
                     <circle cx="141" cy="40" r="1.7" fill="#181c16"/>
                     <path d="M133 37 C129 35, 125 36, 123 38 C127 38, 130 38, 133 39 Z" fill="#dcd8ce"/>
-                    <!-- Ala delantera (derecha/cercana) -->
                     <g class="pelican-wing-near-arm">
                         <path d="M86 51 C74 39, 63 31, 54 31 C60 41, 70 49, 81 55 Z" fill="url(#pelWingTopHero)"/>
                         <g class="pelican-wing-near-tip">
                             <path d="M54 31 C38 19, 19 16, 4 19 C18 25, 35 31, 52 35 Z" fill="#ebe8df"/>
-                            <!-- Plumas primarias oscuras en las puntas -->
                             <path d="M23 18 C15 17, 9 18, 4 19 C10 22, 16 24, 23 25 Z" fill="#232621"/>
                             <path d="M31 20 L14 23 L17 25 L32 23 Z" fill="#232621" opacity="0.85"/>
                         </g>
@@ -334,10 +344,10 @@
             </svg>
         </div>
 
-        <!-- HEADER EDITORIAL MINIMALISTA (3 COLUMNAS) -->
+        <!-- HEADER EDITORIAL MINIMALISTA -->
         <header class="relative z-30 max-w-7xl w-full mx-auto px-6 sm:px-10 pt-7 pb-4">
             <div class="grid grid-cols-2 md:grid-cols-3 items-start">
-                <!-- Izquierda: Logo de GitHub + Marca -->
+                <!-- Izquierda: Logo + Marca -->
                 <a href="#inicio" class="flex items-center gap-3 group">
                     <img src="logo.png" alt="La Perla del Norte" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="h-10 w-10 object-contain rounded-full border border-cream-100/30 p-0.5">
                     <div style="display:none;" class="h-10 w-10 rounded-full border border-cream-100/40 items-center justify-center text-cream-100">
@@ -379,26 +389,29 @@
             </div>
         </header>
 
-        <!-- COMPOSICIÓN CENTRAL DEL HERO CON FOTOS FLOTANTES -->
+        <!-- COMPOSICIÓN CENTRAL DEL HERO CON FOTOS FLOTANTES REALES -->
         <div class="relative z-20 max-w-6xl w-full mx-auto px-6 my-auto py-12 md:py-16">
             <div class="relative flex flex-col items-center justify-center min-h-[430px] md:min-h-[490px]">
                 
-                <!-- Foto Flotante Superior Izquierda (Montaña) -->
+                <!-- Foto Flotante Superior Izquierda: picos de europa.jpg -->
                 <div class="hidden sm:block absolute left-2 md:left-8 top-0 w-36 md:w-44 h-44 md:h-52 rounded-sm overflow-hidden editorial-card border border-cream-100/15 z-10">
-                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=85" 
-                         alt="Montañas del norte" class="w-full h-full object-cover">
+                    <img src="picos de europa.jpg" 
+                         onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=85'"
+                         alt="Picos de Europa" class="w-full h-full object-cover">
                 </div>
 
-                <!-- Foto Flotante Inferior Izquierda (Mar y costa) -->
+                <!-- Foto Flotante Inferior Izquierda: Oyambre.jpg -->
                 <div class="hidden md:block absolute left-20 lg:left-32 bottom-2 w-40 lg:w-48 h-32 lg:h-36 rounded-sm overflow-hidden editorial-card border border-cream-100/15 z-10">
-                    <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=600&q=85" 
-                         alt="Costa Cantábrica" class="w-full h-full object-cover">
+                    <img src="Oyambre.jpg" 
+                         onerror="this.src='https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=600&q=85'"
+                         alt="Parque Natural de Oyambre" class="w-full h-full object-cover">
                 </div>
 
-                <!-- Foto Flotante Derecha (Gastronomía / Producto local) -->
+                <!-- Foto Flotante Derecha: quesos.jpg -->
                 <div class="hidden sm:block absolute right-2 md:right-6 top-12 md:top-16 w-40 md:w-52 h-48 md:h-64 rounded-sm overflow-hidden editorial-card border border-cream-100/15 z-10">
-                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=85" 
-                         alt="Sabores de Cantabria" class="w-full h-full object-cover">
+                    <img src="quesos.jpg" 
+                         onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=85'"
+                         alt="Queserías artesanales de Cantabria" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Titular Central con Tipografía Mixta -->
@@ -412,7 +425,6 @@
                         El norte no se visita, se vive. Rutas pausadas entre mar y montaña, productores locales y experiencias diseñadas a medida.
                     </p>
 
-                    <!-- Indicador circular de scroll -->
                     <a href="#esencia" class="mt-8 inline-flex items-center justify-center w-11 h-11 rounded-full border border-cream-100/40 text-cream-100 hover:border-cream-100 hover:bg-cream-100/10 transition duration-300">
                         <i class="fa-solid fa-arrow-down-long text-xs animate-bounce"></i>
                     </a>
@@ -428,14 +440,14 @@
     </section>
 
     <!-- =========================================================
-         SECCIÓN 2: NUESTRA ESENCIA (LAYOUT ASIMÉTRICO OSCURO)
+         SECCIÓN 2: NUESTRA ESENCIA (FOTOS REALES + NEBLINA NUBOSA SUAVE)
     ========================================================= -->
     <section id="esencia" class="relative bg-moss-900 pt-20 pb-36 md:pb-48 z-20">
         <div class="max-w-5xl mx-auto px-6 sm:px-10">
             
             <!-- Bloque Superior Asimétrico -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
-                <!-- Columna Izquierda: Título + Mini Foto -->
+                <!-- Columna Izquierda: Título + Camino Lebaniego.jpg -->
                 <div class="md:col-span-5 md:pt-12">
                     <h2 class="text-3xl sm:text-4xl font-light text-cream-50 leading-tight">
                         donde la naturaleza <br>
@@ -444,17 +456,19 @@
                     </h2>
                     <span class="bracket-label block mt-3 mb-6">( calma y autenticidad )</span>
 
-                    <div class="w-44 h-52 rounded-sm overflow-hidden editorial-card border border-cream-100/10">
-                        <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=600&q=85" 
-                             alt="Patrimonio y tradición del norte" class="w-full h-full object-cover">
+                    <div class="w-48 h-52 rounded-sm overflow-hidden editorial-card border border-cream-100/10">
+                        <img src="Camino Lebaniego.jpg" 
+                             onerror="this.src='https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=600&q=85'"
+                             alt="Camino Lebaniego · Camaleño" class="w-full h-full object-cover">
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Foto Panorámica + Párrafo Editorial + Foto Detalle -->
+                <!-- Columna Derecha: lago covadonga.jpg + Párrafo + sobaos.jpg -->
                 <div class="md:col-span-7 flex flex-col items-start md:pl-6">
                     <div class="w-full h-56 sm:h-64 rounded-sm overflow-hidden editorial-card border border-cream-100/10 mb-8">
-                        <img src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85" 
-                             alt="Paisaje cultural del Norte" class="w-full h-full object-cover">
+                        <img src="lago covadonga.jpg" 
+                             onerror="this.src='https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85'"
+                             alt="Lagos de Covadonga y Picos de Europa" class="w-full h-full object-cover">
                     </div>
 
                     <p class="text-xs sm:text-sm text-cream-100/80 font-light leading-relaxed max-w-md mb-8">
@@ -463,8 +477,9 @@
 
                     <div class="self-center md:self-start md:ml-10">
                         <span class="bracket-label block text-right mb-2">( sabores con historia )</span>
-                        <div class="w-48 h-48 rounded-sm overflow-hidden editorial-card border border-cream-100/10 mb-8">
-                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=85" 
+                        <div class="w-52 h-48 rounded-sm overflow-hidden editorial-card border border-cream-100/10 mb-8">
+                            <img src="sobaos.jpg" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=85'"
                                  alt="Sobaos Pasiegos Artesanales" class="w-full h-full object-cover">
                         </div>
 
@@ -477,11 +492,11 @@
         </div>
 
         <!-- =========================================================
-             FRANJA DE NUBES VECTORIALES ESPONJOSAS + PELÍCANO EN TRANSICIÓN
+             BANCO DE NUBES NUBOSAS / NEBLINA SUAVE EN MOVIMIENTO LENTO + PELÍCANO
         ========================================================= -->
-        <div class="absolute -bottom-24 sm:-bottom-32 left-0 right-0 h-60 sm:h-72 z-30 pointer-events-none select-none overflow-hidden">
+        <div class="absolute -bottom-24 sm:-bottom-32 left-0 right-0 h-64 sm:h-76 z-30 pointer-events-none select-none overflow-hidden">
             
-            <!-- Pelícano profesional sobrevolando el banco de nubes -->
+            <!-- Pelícano profesional sobrevolando la neblina -->
             <div class="pelican-flight-path top-6 sm:top-8" style="animation-duration: 38s; animation-delay: -5s;">
                 <svg class="w-32 sm:w-40 h-auto drop-shadow-[0_14px_18px_rgba(0,0,0,0.5)]" viewBox="0 0 210 110" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -502,7 +517,6 @@
                         </linearGradient>
                     </defs>
                     <g class="pelican-bob-body">
-                        <!-- Ala trasera (izquierda/lejana) -->
                         <g class="pelican-wing-far-arm">
                             <path d="M88 47 C79 34, 72 26, 64 25 C73 34, 80 42, 85 49 Z" fill="#beb9ac"/>
                             <g class="pelican-wing-far-tip">
@@ -510,25 +524,18 @@
                                 <path d="M35 12 C28 11, 23 11, 20 12 C25 14, 30 15, 35 16 Z" fill="#292c27"/>
                             </g>
                         </g>
-                        <!-- Cola y patas recogidas -->
                         <path d="M48 56 L22 51 L26 57 L20 60 L49 62 Z" fill="#afa99d"/>
                         <path d="M56 63 L36 67 L38 69 L58 65 Z" fill="#c97736"/>
-                        <!-- Cuerpo aerodinámico y cuello en S -->
                         <path d="M47 56 C62 47, 88 46, 110 50 C123 52, 129 45, 133 39 C136 34, 143 34, 148 39 C150 42, 148 47, 143 50 C134 55, 125 65, 102 67 C78 69, 58 64, 47 56 Z" fill="url(#pelBodyCloud)"/>
-                        <!-- Sombra ventral -->
                         <path d="M52 59 C74 66, 102 66, 122 59 C104 63, 76 63, 52 59 Z" fill="#a39e91" opacity="0.5"/>
-                        <!-- Pico largo y bolsa gular característica -->
                         <path d="M147 40 L202 48 C195 50, 174 51, 147 45 Z" fill="#efb956"/>
                         <path d="M147 45 C163 54, 184 54, 201 48 C186 58, 162 60, 144 49 Z" fill="url(#pelBeakCloud)"/>
-                        <!-- Ojo y cresta -->
                         <circle cx="141" cy="40" r="1.8" fill="#181c16"/>
                         <path d="M133 37 C129 35, 125 36, 123 38 C127 38, 130 38, 133 39 Z" fill="#e0dcd2"/>
-                        <!-- Ala delantera (derecha/cercana) -->
                         <g class="pelican-wing-near-arm">
                             <path d="M86 51 C74 39, 63 31, 54 31 C60 41, 70 49, 81 55 Z" fill="url(#pelWingTopCloud)"/>
                             <g class="pelican-wing-near-tip">
                                 <path d="M54 31 C38 19, 19 16, 4 19 C18 25, 35 31, 52 35 Z" fill="#f2efe9"/>
-                                <!-- Plumas primarias oscuras en las puntas -->
                                 <path d="M23 18 C15 17, 9 18, 4 19 C10 22, 16 24, 23 25 Z" fill="#232621"/>
                                 <path d="M31 20 L14 23 L17 25 L32 23 Z" fill="#232621" opacity="0.85"/>
                             </g>
@@ -537,74 +544,59 @@
                 </svg>
             </div>
 
-            <!-- Capa 1 de Nubes (Fondo lejano, movimiento lento hacia la izquierda) -->
-            <div class="cloud-marquee-wrapper absolute inset-x-0 bottom-8 opacity-65">
-                <div class="cloud-track cloud-track-slow">
-                    <svg class="w-1/2 h-48 flex-shrink-0" viewBox="0 0 1440 220" preserveAspectRatio="none">
-                        <defs>
-                            <linearGradient id="cloudGradBack" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                                <stop offset="65%" stop-color="#f2efe9" stop-opacity="0.85"/>
-                                <stop offset="100%" stop-color="#f2efe9" stop-opacity="0"/>
-                            </linearGradient>
-                            <linearGradient id="cloudGradMain" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-                                <stop offset="72%" stop-color="#f5f2ec" stop-opacity="0.95"/>
-                                <stop offset="100%" stop-color="#f2efe9" stop-opacity="0"/>
-                            </linearGradient>
-                            <filter id="softCloudBlur" x="-5%" y="-10%" width="110%" height="120%">
-                                <feGaussianBlur stdDeviation="3.5"/>
-                            </filter>
-                        </defs>
-                        <g filter="url(#softCloudBlur)">
-                            <path d="M-40,180 C-20,130 35,115 75,130 C105,78 185,68 225,112 C265,84 335,102 350,145 C395,135 445,155 460,190 L-40,190 Z" fill="url(#cloudGradBack)"/>
-                            <path d="M410,185 C435,135 495,120 540,138 C575,82 665,72 710,118 C755,88 835,106 852,150 C902,138 955,158 972,195 L410,195 Z" fill="url(#cloudGradBack)"/>
-                            <path d="M920,180 C945,130 1005,115 1050,132 C1085,78 1175,68 1220,114 C1265,86 1345,104 1362,148 C1405,138 1455,158 1475,190 L920,190 Z" fill="url(#cloudGradBack)"/>
-                        </g>
-                    </svg>
-                    <svg class="w-1/2 h-48 flex-shrink-0" viewBox="0 0 1440 220" preserveAspectRatio="none">
-                        <g filter="url(#softCloudBlur)">
-                            <path d="M-40,180 C-20,130 35,115 75,130 C105,78 185,68 225,112 C265,84 335,102 350,145 C395,135 445,155 460,190 L-40,190 Z" fill="url(#cloudGradBack)"/>
-                            <path d="M410,185 C435,135 495,120 540,138 C575,82 665,72 710,118 C755,88 835,106 852,150 C902,138 955,158 972,195 L410,195 Z" fill="url(#cloudGradBack)"/>
-                            <path d="M920,180 C945,130 1005,115 1050,132 C1085,78 1175,68 1220,114 C1265,86 1345,104 1362,148 C1405,138 1455,158 1475,190 L920,190 Z" fill="url(#cloudGradBack)"/>
-                        </g>
-                    </svg>
+            <!-- Capa 1: Neblina alta etérea (deriva lenta hacia la izquierda) -->
+            <div class="mist-cloud-layer absolute inset-x-0 bottom-10 h-52 opacity-75">
+                <div class="mist-track mist-drift-left-slow h-full">
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff-soft absolute bottom-8 left-[-4%] w-[460px] h-40"></div>
+                        <div class="mist-puff-soft absolute bottom-12 left-[22%] w-[520px] h-44"></div>
+                        <div class="mist-puff-soft absolute bottom-6 left-[52%] w-[480px] h-40"></div>
+                        <div class="mist-puff-soft absolute bottom-10 left-[76%] w-[460px] h-44"></div>
+                    </div>
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff-soft absolute bottom-8 left-[-4%] w-[460px] h-40"></div>
+                        <div class="mist-puff-soft absolute bottom-12 left-[22%] w-[520px] h-44"></div>
+                        <div class="mist-puff-soft absolute bottom-6 left-[52%] w-[480px] h-40"></div>
+                        <div class="mist-puff-soft absolute bottom-10 left-[76%] w-[460px] h-44"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Capa 2 de Nubes (Media, movimiento suave hacia la derecha) -->
-            <div class="cloud-marquee-wrapper absolute inset-x-0 bottom-3 opacity-85">
-                <div class="cloud-track cloud-track-medium">
-                    <svg class="w-1/2 h-48 flex-shrink-0" viewBox="0 0 1440 220" preserveAspectRatio="none">
-                        <g filter="url(#softCloudBlur)">
-                            <path d="M-30,195 C-5,142 58,128 102,146 C138,85 235,72 282,122 C330,92 415,112 432,158 C482,145 538,165 555,205 L-30,205 Z" fill="url(#cloudGradMain)"/>
-                            <path d="M490,198 C518,145 582,130 628,148 C665,88 765,75 812,125 C860,94 945,114 962,160 C1012,148 1068,168 1085,208 L490,208 Z" fill="url(#cloudGradMain)"/>
-                            <path d="M1010,195 C1038,142 1102,128 1148,146 C1185,85 1285,72 1332,122 C1380,92 1455,112 1472,158 L1472,205 L1010,205 Z" fill="url(#cloudGradMain)"/>
-                        </g>
-                    </svg>
-                    <svg class="w-1/2 h-48 flex-shrink-0" viewBox="0 0 1440 220" preserveAspectRatio="none">
-                        <g filter="url(#softCloudBlur)">
-                            <path d="M-30,195 C-5,142 58,128 102,146 C138,85 235,72 282,122 C330,92 415,112 432,158 C482,145 538,165 555,205 L-30,205 Z" fill="url(#cloudGradMain)"/>
-                            <path d="M490,198 C518,145 582,130 628,148 C665,88 765,75 812,125 C860,94 945,114 962,160 C1012,148 1068,168 1085,208 L490,208 Z" fill="url(#cloudGradMain)"/>
-                            <path d="M1010,195 C1038,142 1102,128 1148,146 C1185,85 1285,72 1332,122 C1380,92 1455,112 1472,158 L1472,205 L1010,205 Z" fill="url(#cloudGradMain)"/>
-                        </g>
-                    </svg>
+            <!-- Capa 2: Nubes vaporosas medias (deriva suave hacia la derecha) -->
+            <div class="mist-cloud-layer absolute inset-x-0 bottom-2 h-52 opacity-90">
+                <div class="mist-track mist-drift-right-slow h-full">
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff absolute bottom-4 left-[-5%] w-[480px] h-40"></div>
+                        <div class="mist-puff absolute bottom-8 left-[18%] w-[420px] h-44"></div>
+                        <div class="mist-puff absolute bottom-2 left-[40%] w-[540px] h-40"></div>
+                        <div class="mist-puff absolute bottom-7 left-[68%] w-[460px] h-44"></div>
+                        <div class="mist-puff absolute bottom-3 left-[86%] w-[360px] h-36"></div>
+                    </div>
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff absolute bottom-4 left-[-5%] w-[480px] h-40"></div>
+                        <div class="mist-puff absolute bottom-8 left-[18%] w-[420px] h-44"></div>
+                        <div class="mist-puff absolute bottom-2 left-[40%] w-[540px] h-40"></div>
+                        <div class="mist-puff absolute bottom-7 left-[68%] w-[460px] h-44"></div>
+                        <div class="mist-puff absolute bottom-3 left-[86%] w-[360px] h-36"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Capa 3 de Nubes (Primer plano esponjoso, movimiento fluido hacia la izquierda) -->
-            <div class="cloud-marquee-wrapper absolute inset-x-0 -bottom-2 opacity-95">
-                <div class="cloud-track cloud-track-front">
-                    <svg class="w-1/2 h-44 flex-shrink-0" viewBox="0 0 1440 200" preserveAspectRatio="none">
-                        <path d="M-20,190 C5,145 62,135 102,152 C132,102 215,92 255,134 C295,108 368,124 382,162 C425,152 475,168 490,195 L-20,195 Z" fill="url(#cloudGradMain)"/>
-                        <path d="M440,192 C468,148 525,138 565,154 C598,104 682,94 722,136 C762,110 835,126 850,164 C895,154 945,170 960,195 L440,195 Z" fill="url(#cloudGradMain)"/>
-                        <path d="M910,190 C938,145 995,135 1035,152 C1068,102 1152,92 1192,134 C1232,108 1305,124 1320,162 C1365,152 1415,168 1430,195 L910,195 Z" fill="url(#cloudGradMain)"/>
-                    </svg>
-                    <svg class="w-1/2 h-44 flex-shrink-0" viewBox="0 0 1440 200" preserveAspectRatio="none">
-                        <path d="M-20,190 C5,145 62,135 102,152 C132,102 215,92 255,134 C295,108 368,124 382,162 C425,152 475,168 490,195 L-20,195 Z" fill="url(#cloudGradMain)"/>
-                        <path d="M440,192 C468,148 525,138 565,154 C598,104 682,94 722,136 C762,110 835,126 850,164 C895,154 945,170 960,195 L440,195 Z" fill="url(#cloudGradMain)"/>
-                        <path d="M910,190 C938,145 995,135 1035,152 C1068,102 1152,92 1192,134 C1232,108 1305,124 1320,162 C1365,152 1415,168 1430,195 L910,195 Z" fill="url(#cloudGradMain)"/>
-                    </svg>
+            <!-- Capa 3: Manto de neblina densa en primer plano fundiéndose con la sección crema -->
+            <div class="mist-cloud-layer absolute inset-x-0 -bottom-6 h-44 opacity-95">
+                <div class="mist-track mist-drift-left-gentle h-full">
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff absolute bottom-0 left-[-6%] w-[520px] h-36"></div>
+                        <div class="mist-puff absolute bottom-2 left-[24%] w-[560px] h-40"></div>
+                        <div class="mist-puff absolute bottom-0 left-[56%] w-[540px] h-36"></div>
+                        <div class="mist-puff absolute bottom-1 left-[82%] w-[440px] h-36"></div>
+                    </div>
+                    <div class="w-1/2 h-full relative flex-shrink-0">
+                        <div class="mist-puff absolute bottom-0 left-[-6%] w-[520px] h-36"></div>
+                        <div class="mist-puff absolute bottom-2 left-[24%] w-[560px] h-40"></div>
+                        <div class="mist-puff absolute bottom-0 left-[56%] w-[540px] h-36"></div>
+                        <div class="mist-puff absolute bottom-1 left-[82%] w-[440px] h-36"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -613,13 +605,14 @@
     <!-- =========================================================
          SECCIÓN 3: GRÁFICO / MAPA PANORÁMICO INTERACTIVO DEL NORTE
     ========================================================= -->
-    <section id="mapa" class="relative bg-cream-100 text-moss-900 pt-10 pb-14">
+    <section id="mapa" class="relative bg-cream-100 text-moss-900 pt-12 pb-14">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
             <div class="relative rounded-xl overflow-hidden shadow-2xl border border-moss-900/10 h-[440px] sm:h-[540px] group">
-                <!-- Imagen panorámica de tu GitHub (Valles y Costa) -->
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85" 
-                     alt="Mapa ilustrado de Cantabria y Picos de Europa" 
-                     class="w-full h-full object-cover object-center filter brightness-[0.82] contrast-[1.06] group-hover:scale-[1.02] transition duration-1000">
+                <!-- Imagen panorámica aérea: Oyambre.jpg -->
+                <img src="Oyambre.jpg" 
+                     onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85'"
+                     alt="Vista aérea de Oyambre y costa de Cantabria" 
+                     class="w-full h-full object-cover object-center filter brightness-[0.80] contrast-[1.06] group-hover:scale-[1.02] transition duration-1000">
                 <div class="absolute inset-0 bg-gradient-to-t from-moss-950/85 via-moss-900/20 to-moss-950/35"></div>
 
                 <!-- Encabezado flotante sobre el gráfico -->
@@ -638,7 +631,7 @@
                 </button>
 
                 <button onclick="selectMapPoint(1)" class="map-hotspot absolute top-[26%] right-[16%] sm:right-[22%] z-20 flex flex-col items-center group/pin focus:outline-none">
-                    <span class="font-script italic text-lg sm:text-xl text-cream-50 drop-shadow-md mb-1 group-hover/pin:text-terracotta-500 transition">Santoña & Anchoas</span>
+                    <span class="font-script italic text-lg sm:text-xl text-cream-50 drop-shadow-md mb-1 group-hover/pin:text-terracotta-500 transition">Santoña & Vinos</span>
                     <span class="relative flex h-4 w-4">
                         <span class="map-pin-ring absolute inline-flex h-full w-full rounded-full bg-cream-50 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-4 w-4 bg-terracotta-600 border-2 border-cream-50"></span>
@@ -692,7 +685,7 @@
     </section>
 
     <!-- =========================================================
-         SECCIÓN 4: CATÁLOGO OFICIAL DE 17 EXPERIENCIAS (ESTILO GALERÍA)
+         SECCIÓN 4: CATÁLOGO OFICIAL DE 17 EXPERIENCIAS
     ========================================================= -->
     <section id="catalogo" class="py-16 bg-cream-100 text-moss-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-8">
@@ -969,7 +962,7 @@
          MODAL DE FICHA DETALLADA DEL CATÁLOGO
     ========================================================= -->
     <div id="detail-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-moss-950/80 backdrop-blur-sm p-4">
-        <div class="bg-cream-50 text-moss-950 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl border border-moss-900/15 relative animate-fadeIn">
+        <div class="bg-cream-50 text-moss-950 max-w-xl w-full rounded-2xl overflow-hidden shadow-2xl border border-moss-900/15 relative">
             <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-moss-950/70 text-cream-50 hover:bg-terracotta-600 flex items-center justify-center transition">
                 <i class="fa-solid fa-xmark text-sm"></i>
             </button>
@@ -1011,7 +1004,7 @@
     </div>
 
     <!-- =========================================================
-         JAVASCRIPT: CATÁLOGO DE 17 OPCIONES, MAPA Y INTERACTIVIDAD
+         JAVASCRIPT: CATÁLOGO DE 17 OPCIONES CON TUS FOTOS REALES
     ========================================================= -->
     <script>
         const catalogData = [
@@ -1026,410 +1019,6 @@
                 duration: "1 día (6-7 h)",
                 difficulty: "Todos los públicos",
                 price: "150 €",
-                img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
-                desc: "Visita guiada a obradores tradicionales pasiegos para conocer la elaboración artesanal del sobao y la quesada, seguida de una degustación maridada en quesería local."
-            },
-            {
-                id: 2,
-                num: "02",
-                category: "sabores",
-                categoryLabel: "Sabores del Norte",
-                title: "Queserías de los Valles Pasiegos",
-                location: "Valles Pasiegos, Cantabria",
-                duration: "1 día (6-7 h)",
-                difficulty: "Todos los públicos",
-                price: "150 €",
-                img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85",
-                desc: "Ruta por las cabañas y praderas verdes de los Valles Pasiegos con cata comentada de quesos autóctonos de nata, madurados y de pasta blanda."
-            },
-            {
-                id: 3,
-                num: "03",
-                category: "sabores",
-                categoryLabel: "Sabores del Norte",
-                title: "Granjas y Huertas de Cantabria",
-                location: "Huertas locales · Cantabria",
-                duration: "1 día (6-7 h)",
-                difficulty: "Familiar",
-                price: "100 €",
-                img: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
-                desc: "Experiencia rural sostenible en contacto directo con productores de la tierra, recolección de temporada y almuerzo campesino de kilómetro cero."
-            },
-            {
-                id: 4,
-                num: "04",
-                category: "sabores",
-                categoryLabel: "Sabores del Norte",
-                title: "La Ruta de los Vinos Cántabros",
-                location: "Bodegas costeras · Cantabria",
-                duration: "1 día (6-8 h)",
-                difficulty: "Todos los públicos",
-                price: "170 €",
-                img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=85",
-                desc: "Recorrido por viñedos atlánticos con vistas al Cantábrico, cata de blancos y tintos de la tierra acompañada de aperitivos gourmet."
-            },
-            {
-                id: 5,
-                num: "05",
-                category: "sabores",
-                categoryLabel: "Sabores del Norte",
-                title: "Gourmet del Mar: Arte de la Anchoa",
-                location: "Santoña, Cantabria",
-                duration: "5-7 horas",
-                difficulty: "Todos los públicos",
-                price: "120 €",
-                img: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
-                desc: "Descubre el sobado a mano de la anchoa del Cantábrico en una conservera artesanal de Santoña y disfruta de una cata frente a la bahía."
-            },
-
-            // 02 · VISTAS DEL NORTE (7 opciones)
-            {
-                id: 6,
-                num: "06",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Camino Lebaniego (Ruta a pie)",
-                location: "San Vicente de la Barquera - Potes",
-                duration: "3 días (72 km)",
-                difficulty: "Dificultad media",
-                price: "450 €",
-                img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85",
-                desc: "Travesía histórica desde la costa hasta el Monasterio de Santo Toribio de Liébana atravesando desfiladeros, bosques centenarios y aldeas de piedra."
-            },
-            {
-                id: 7,
-                num: "07",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Ruta del Cares",
-                location: "Poncebos - Caín",
-                duration: "4 horas (12 km)",
-                difficulty: "Dificultad media-baja",
-                price: "140 €",
-                img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
-                desc: "La emblemática Garganta Divina tallada en la roca en pleno corazón de los Picos de Europa con guía de montaña."
-            },
-            {
-                id: 8,
-                num: "08",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Lagos de Covadonga",
-                location: "Asturias · Picos de Europa",
-                duration: "6-8 horas",
-                difficulty: "Dificultad baja-media",
-                price: "140 €",
-                img: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
-                desc: "Excursión panorámica por los lagos glaciares Enol y Ercina con parada cultural y degustación de quesos asturianos."
-            },
-            {
-                id: 9,
-                num: "09",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Costa Quebrada (Senderismo)",
-                location: "Liencres · Santander",
-                duration: "4 horas (10 km)",
-                difficulty: "Dificultad media",
-                price: "130 €",
-                img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85",
-                desc: "Ruta geológica por acantilados esculpidos por el oleaje, arcos naturales, dunas de Liencres y playas salvajes del Cantábrico."
-            },
-            {
-                id: 10,
-                num: "10",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Parque Natural de Oyambre",
-                location: "San Vicente de la Barquera",
-                duration: "3 horas (8 km)",
-                difficulty: "Dificultad baja",
-                price: "120 €",
-                img: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
-                desc: "Paseo interpretativo entre marismas, rías, acantilados verdes y vistas privilegiadas a los Picos de Europa nevados al fondo."
-            },
-            {
-                id: 11,
-                num: "11",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Picos de Europa · Teleférico",
-                location: "Fuente Dé, Liébana",
-                duration: "6 horas",
-                difficulty: "Dificultad media-alta",
-                price: "180 €",
-                img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",
-                desc: "Ascenso en el teleférico de Fuente Dé hasta El Cable (1.823 m) y ruta de alta montaña por los puertos de Áliva."
-            },
-            {
-                id: 12,
-                num: "12",
-                category: "vistas",
-                categoryLabel: "Vistas del Norte",
-                title: "Cudillero y Ribadesella",
-                location: "Costa asturiana",
-                duration: "1 día",
-                difficulty: "Dificultad baja",
-                price: "140 €",
-                img: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=85",
-                desc: "Jornada cultural por los anfiteatros de casas marineras de colores, miradores costeros y gastronomía marinera."
-            },
-
-            // 03 · SOUVENIRS DE LA TIERRA (5 opciones)
-            {
-                id: 13,
-                num: "13",
-                category: "souvenirs",
-                categoryLabel: "Souvenirs de la Tierra",
-                title: "Lote Gourmet Cántabro",
-                location: "Envío a domicilio / Recogida",
-                duration: "Entrega 24-48h",
-                difficulty: "Selección Artesanal",
-                price: "35 €",
-                img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85",
-                desc: "Caja presentación con quesos artesanos, sobaos pasiegos con mantequilla, anchoas de Santoña y productos locales seleccionados."
-            },
-            {
-                id: 14,
-                num: "14",
-                category: "souvenirs",
-                categoryLabel: "Souvenirs de la Tierra",
-                title: "Tazas Decorativas del Norte",
-                location: "Diseño exclusivo La Perla",
-                duration: "Edición limitada",
-                difficulty: "Cerámica",
-                price: "12 €",
-                img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
-                desc: "Taza de cerámica ilustrada con motivos marineros y paisajes emblemáticos de Cantabria."
-            },
-            {
-                id: 15,
-                num: "15",
-                category: "souvenirs",
-                categoryLabel: "Souvenirs de la Tierra",
-                title: "Platos Decorativos Artesanales",
-                location: "Alfarería local · Cantabria",
-                duration: "Pieza única",
-                difficulty: "Artesanía",
-                price: "18 €",
-                img: "https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=85",
-                desc: "Platos pintados a mano inspirados en la cerámica tradicional cántabra y el mar Cantábrico."
-            },
-            {
-                id: 16,
-                num: "16",
-                category: "souvenirs",
-                categoryLabel: "Souvenirs de la Tierra",
-                title: "Imanes Artesanales de Paisajes",
-                location: "Hecho en Cantabria",
-                duration: "Colección completa",
-                difficulty: "Recuerdo",
-                price: "8 €",
-                img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85",
-                desc: "Diferentes diseños ilustrados de acantilados, faros y montañas de Cantabria acabados a mano."
-            },
-            {
-                id: 17,
-                num: "17",
-                category: "souvenirs",
-                categoryLabel: "Souvenirs de la Tierra",
-                title: "Llaveros y Recuerdos en Madera",
-                location: "Artesanía local · Cantabria",
-                duration: "Grabado artesanal",
-                difficulty: "Recuerdo",
-                price: "8 €",
-                img: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=900&q=85",
-                desc: "Llaveros grabados en madera natural con símbolos tradicionales del norte y la concha de La Perla del Norte."
-            }
-        ];
-
-        const mapLocations = [
-            {
-                tag: "02 · Vistas y Rutas",
-                title: "Costa Quebrada — Acantilados y Dunas de Liencres",
-                desc: "Formaciones geológicas únicas frente al mar Cantábrico, senderos costeros y puestas de sol inolvidables.",
-                cat: "vistas"
-            },
-            {
-                tag: "01 · Sabores del Norte",
-                title: "Santoña — El Arte de la Anchoa del Cantábrico",
-                desc: "Talleres conserveros tradicionales, paseo marítimo y degustación de producto del mar recién sobado.",
-                cat: "sabores"
-            },
-            {
-                tag: "01 · Sabores del Norte",
-                title: "Valles Pasiegos — Sobaos, Quesadas y Praderas",
-                desc: "Obradores históricos y queserías artesanales rodeadas de cabañas de piedra y montañas verdes.",
-                cat: "sabores"
-            },
-            {
-                tag: "02 · Vistas y Rutas",
-                title: "Parque Natural de Oyambre & San Vicente",
-                desc: "Rías, marismas y playas infinitas con las cumbres nevadas de los Picos de Europa en el horizonte.",
-                cat: "vistas"
-            },
-            {
-                tag: "02 · Vistas y Rutas",
-                title: "Picos de Europa — Fuente Dé y Ruta del Cares",
-                desc: "Alta montaña accesible en teleférico, gargantas esculpidas en roca y aldeas lebaniegas.",
-                cat: "vistas"
-            }
-        ];
-
-        let currentCategory = 'all';
-        let currentSearch = '';
-
-        function selectMapPoint(index) {
-            const point = mapLocations[index];
-            document.getElementById('map-point-tag').textContent = point.tag;
-            document.getElementById('map-point-title').textContent = point.title;
-            document.getElementById('map-point-desc').textContent = point.desc;
-            const btn = document.getElementById('map-point-btn');
-            btn.setAttribute('onclick', `filterCatalog('${point.cat}')`);
-        }
-
-        function renderCatalog() {
-            const grid = document.getElementById('catalog-grid');
-            const empty = document.getElementById('empty-state');
-            const badge = document.getElementById('cat-count-badge');
-
-            const filtered = catalogData.filter(item => {
-                const matchesCat = currentCategory === 'all' || item.category === currentCategory;
-                const q = currentSearch.toLowerCase();
-                const matchesSearch = item.title.toLowerCase().includes(q) || 
-                                      item.location.toLowerCase().includes(q) || 
-                                      item.desc.toLowerCase().includes(q);
-                return matchesCat && matchesSearch;
-            });
-
-            badge.textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'opción' : 'opciones'}`;
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                empty.classList.remove('hidden');
-                return;
-            }
-
-            empty.classList.add('hidden');
-            grid.innerHTML = filtered.map(item => `
-                <article onclick="openModal(${item.id})" class="group cursor-pointer flex flex-col">
-                    <div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-moss-900 mb-4 shadow-sm">
-                        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent"></div>
-                        <span class="absolute top-3 left-3 bg-moss-950/75 backdrop-blur-sm text-cream-50 text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full">
-                            ${item.num} · ${item.categoryLabel}
-                        </span>
-                        <span class="absolute bottom-3 left-3 text-cream-50 text-xs font-medium tracking-wide">
-                            ${item.price} · ${item.duration}
-                        </span>
-                    </div>
-
-                    <div class="flex items-baseline justify-between gap-2">
-                        <h3 class="font-serif text-lg text-moss-950 group-hover:text-terracotta-600 transition">${item.title}</h3>
-                    </div>
-                    <p class="text-xs text-moss-900/65 line-clamp-2 mt-1 mb-3 leading-relaxed">${item.desc}</p>
-                    <div class="mt-auto flex items-center gap-4 text-xs">
-                        <span class="font-semibold text-moss-950 underline underline-offset-4 group-hover:text-terracotta-600 transition">reservar</span>
-                        <span class="text-moss-900/45 group-hover:text-moss-900 transition">ver detalles →</span>
-                    </div>
-                </article>
-            `).join('');
-        }
-
-        function filterCatalog(cat) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-moss-900', 'text-cream-50');
-                btn.classList.add('bg-white', 'text-moss-900/75');
-            });
-            const activeBtn = document.getElementById(`btn-${cat}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-white', 'text-moss-900/75');
-                activeBtn.classList.add('bg-moss-900', 'text-cream-50');
-            }
-            renderCatalog();
-        }
-
-        function searchCatalog() {
-            currentSearch = document.getElementById('catalog-search').value;
-            renderCatalog();
-        }
-
-        function resetFilters() {
-            currentCategory = 'all';
-            currentSearch = '';
-            document.getElementById('catalog-search').value = '';
-            filterCatalog('all');
-        }
-
-        function openModal(id) {
-            const item = catalogData.find(i => i.id === id);
-            if (!item) return;
-
-            document.getElementById('modal-img').src = item.img;
-            document.getElementById('modal-img').alt = item.title;
-            document.getElementById('modal-cat-badge').textContent = `${item.num} · ${item.categoryLabel}`;
-            document.getElementById('modal-title').textContent = item.title;
-            document.getElementById('modal-location').textContent = item.location;
-            document.getElementById('modal-duration').textContent = item.duration;
-            document.getElementById('modal-difficulty').textContent = item.difficulty;
-            document.getElementById('modal-desc').textContent = item.desc;
-            document.getElementById('modal-price').textContent = item.price;
-
-            const waText = encodeURIComponent(`Hola, me gustaría reservar o recibir información sobre: ${item.title} (${item.price}).`);
-            document.getElementById('modal-wa-link').href = `https://wa.me/34688112233?text=${waText}`;
-
-            document.getElementById('modal-form-btn').onclick = () => {
-                closeModal();
-                selectPlanInForm(item.title);
-                document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
-            };
-
-            const modal = document.getElementById('detail-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('detail-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function selectPlanInForm(value) {
-            const input = document.getElementById('form-interest');
-            if (input) input.value = value;
-        }
-
-        function toggleFaq(num) {
-            const ans = document.getElementById(`faq-ans-${num}`);
-            const icon = document.getElementById(`faq-icon-${num}`);
-            const isHidden = ans.classList.contains('hidden');
-            ans.classList.toggle('hidden');
-            icon.style.transform = isHidden ? 'rotate(45deg)' : 'rotate(0deg)';
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            document.getElementById('form-success').classList.remove('hidden');
-            e.target.reset();
-        }
-
-        // Menú móvil
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-
-        // Cerrar modal con tecla Escape o clic fuera
-        document.getElementById('detail-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'detail-modal') closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        // Inicializar catálogo al cargar
-        renderCatalog();
-    </script>
-</body>
-</html>
+                img: "sobaos.jpg",
+                fallbackImg: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=85",
+                desc: "Visita guiada a obradores tradicionales pasiegos para conocer la elaboración artesanal del sobao y la quesada, seguida de una degust
